@@ -114,6 +114,7 @@
       gap: 3%;
       margin-bottom: 30px;
       margin-top: -40px;
+      align-items: start;
     }
 
     .card {
@@ -143,6 +144,121 @@
     .desc {
       font-size: 1.7vmin;
       line-height: 1.6;
+    }
+
+    /* Lightbox */
+    .lightbox {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(2, 25, 77, 0.85);
+      z-index: 1000;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .lightbox.active {
+      display: flex;
+    }
+
+    .lightbox-content {
+      background: var(--card-bg);
+      padding: 4vmin;
+      max-width: 120vmin;
+      height: 60vmin;
+      position: relative;
+      display: flex;
+      gap: 3vmin;
+    }
+
+    @media (max-width: 768px) {
+      .lightbox-content {
+        flex-direction: column;
+        height: auto;
+        max-height: 80vh;
+        overflow-y: auto;
+      }
+
+      .lightbox-image {
+        width: 100% !important;
+        height: auto !important;
+        aspect-ratio: 1/1;
+      }
+
+      .lightbox-text {
+        width: 100% !important;
+      }
+    }
+
+    .lightbox-close {
+      position: absolute;
+      top: 2vmin;
+      right: 2vmin;
+      background: none;
+      border: none;
+      font-size: 3vmin;
+      cursor: pointer;
+      color: var(--text);
+      font-family: inherit;
+      z-index: 10;
+    }
+
+    .lightbox-image {
+      height: 100%;
+      aspect-ratio: 1/1;
+      background: #02194D;
+      flex-shrink: 0;
+    }
+
+    .lightbox-text {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding-right: 2vmin;
+    }
+
+    .lightbox-info-top {
+      margin-top: 0;
+    }
+
+    .lightbox-description {
+      margin-bottom: 0;
+      font-size: 1.7vmin;
+    }
+
+    .lightbox-title {
+      font-size: 2.7vmin;
+      margin-bottom: 1vmin;
+      font-weight: 600;
+    }
+
+    .lightbox-details {
+      font-size: 1.7vmin;
+      line-height: 1.6;
+    }
+
+    .lightbox-details p {
+      margin-bottom: 0.5vmin;
+    }
+
+    .card.clickable {
+      cursor: pointer;
+      transition: opacity 0.2s;
+    }
+
+    .card.clickable:hover {
+      opacity: 0.8;
+    }
+
+    .card.back-button {
+      aspect-ratio: auto;
+      height: auto;
+      min-height: auto;
+      margin-bottom: -14px;
     }
 
   </style>
@@ -184,6 +300,7 @@
 
       <section class="cards-row">
         <article class="card">
+          <div class="card-image"></div>
           <div class="desc">
             Prudence Bijoux a été créée pour proposer des bijoux fait mains, pour ceux qui aiment le beau et le manuel. (prstn de la marque)
 (texte blanco)
@@ -195,6 +312,7 @@
             Qui suis-je ? Prudence, tel age, tel etudes, etc (prstn Prudence personelle)
 (texte blanco)
           </div>
+          <div class="card-image"></div>
         </article>
 
         <article class="card">
@@ -209,7 +327,7 @@
       </section>
     </section>
 
-    <!-- PAGE COLLECTIONS -->
+    <!-- PAGE COLLECTIONS (liste des collections) -->
     <section class="page" id="page-collection">
       <section class="title-row">
         <h1 class="main-title">Collections</h1>
@@ -217,63 +335,177 @@
       </section>
 
       <section class="cards-row">
-        <article class="card">
+        <article class="card clickable" onclick="showPage('collection-lumiere')">
           <div class="card-image"></div>
           <div class="card-info">
             <div class="card-info-left">
-              <p>Nom</p><p>Collection</p><p>Matériaux</p>
+              <p>Lumière</p><p>Collection Printemps</p><p>Or et pierres fines</p>
             </div>
-            <div class="card-info-right"><p>PRIX</p></div>
+            <div class="card-info-right"><p>VOIR</p></div>
           </div>
         </article>
 
-        <article class="card">
+        <article class="card clickable" onclick="showPage('collection-ombre')">
           <div class="card-image"></div>
           <div class="card-info">
             <div class="card-info-left">
-              <p>Nom</p><p>Collection</p><p>Matériaux</p>
+              <p>Ombre</p><p>Collection Hiver</p><p>Argent et onyx</p>
             </div>
-            <div class="card-info-right"><p>PRIX</p></div>
+            <div class="card-info-right"><p>VOIR</p></div>
           </div>
         </article>
 
-        <article class="card">
+        <article class="card clickable" onclick="showPage('collection-terre')">
           <div class="card-image"></div>
           <div class="card-info">
             <div class="card-info-left">
-              <p>Nom</p><p>Collection</p><p>Matériaux</p>
+              <p>Terre</p><p>Collection Automne</p><p>Cuivre et bois</p>
             </div>
-            <div class="card-info-right"><p>PRIX</p></div>
+            <div class="card-info-right"><p>VOIR</p></div>
+          </div>
+        </article>
+      </section>
+    </section>
+
+    <!-- SUBPAGE: Collection Lumière -->
+    <section class="page" id="page-collection-lumiere">
+      <section class="title-row">
+        <h1 class="main-title">Lumière</h1>
+        <p class="type-label">Collection Printemps</p>
+      </section>
+
+      <section class="cards-row">
+        <article class="card clickable" onclick="openLightbox('Bague Soleil', 'Collection Lumière', 'Or 18k, citrine', '250€', 'Bague dorée ornée d\'une citrine taillée en poire. Pièce délicate inspirée par les premiers rayons du printemps.')">
+          <div class="card-image"></div>
+          <div class="card-info">
+            <div class="card-info-left">
+              <p>Bague Soleil</p><p>Or 18k, citrine</p><p>Taille ajustable</p>
+            </div>
+            <div class="card-info-right"><p>250€</p></div>
           </div>
         </article>
 
-        <article class="card">
+        <article class="card clickable" onclick="openLightbox('Collier Aube', 'Collection Lumière', 'Or 14k, perles d\'eau douce', '320€', 'Collier fin avec pendentif en forme de goutte, orné de petites perles d\'eau douce. Chaîne réglable.')">
           <div class="card-image"></div>
           <div class="card-info">
             <div class="card-info-left">
-              <p>Nom</p><p>Collection</p><p>Matériaux</p>
+              <p>Collier Aube</p><p>Or 14k, perles</p><p>Chaîne 45cm</p>
             </div>
-            <div class="card-info-right"><p>PRIX</p></div>
+            <div class="card-info-right"><p>320€</p></div>
           </div>
         </article>
 
-        <article class="card">
+        <article class="card clickable" onclick="openLightbox('Bracelet Éclat', 'Collection Lumière', 'Or jaune, quartz rose', '180€', 'Bracelet fin avec trois petites pierres de quartz rose. Fermoir discret et élégant.')">
           <div class="card-image"></div>
           <div class="card-info">
             <div class="card-info-left">
-              <p>Nom</p><p>Collection</p><p>Matériaux</p>
+              <p>Bracelet Éclat</p><p>Or jaune, quartz rose</p><p>Longueur 18cm</p>
             </div>
-            <div class="card-info-right"><p>PRIX</p></div>
+            <div class="card-info-right"><p>180€</p></div>
           </div>
         </article>
 
-        <article class="card">
+        <article class="card clickable back-button" onclick="showPage('collection')">
+          <div class="card-info">
+            <div class="card-info-left">
+              <p>← Retour aux collections</p>
+            </div>
+          </div>
+        </article>
+      </section>
+    </section>
+
+    <!-- SUBPAGE: Collection Ombre -->
+    <section class="page" id="page-collection-ombre">
+      <section class="title-row">
+        <h1 class="main-title">Ombre</h1>
+        <p class="type-label">Collection Hiver</p>
+      </section>
+
+      <section class="cards-row">
+        <article class="card clickable" onclick="openLightbox('Bague Nuit', 'Collection Ombre', 'Argent 925, onyx noir', '195€', 'Bague en argent massif sertie d\'un onyx noir mat. Design minimaliste et intemporel.')">
           <div class="card-image"></div>
           <div class="card-info">
             <div class="card-info-left">
-              <p>Nom</p><p>Collection</p><p>Matériaux</p>
+              <p>Bague Nuit</p><p>Argent 925, onyx</p><p>Taille 54</p>
             </div>
-            <div class="card-info-right"><p>PRIX</p></div>
+            <div class="card-info-right"><p>195€</p></div>
+          </div>
+        </article>
+
+        <article class="card clickable" onclick="openLightbox('Collier Lune', 'Collection Ombre', 'Argent oxydé, pierre de lune', '280€', 'Pendentif en forme de croissant avec pierre de lune iridescente. Chaîne argentée texturée.')">
+          <div class="card-image"></div>
+          <div class="card-info">
+            <div class="card-info-left">
+              <p>Collier Lune</p><p>Argent, pierre de lune</p><p>Chaîne 50cm</p>
+            </div>
+            <div class="card-info-right"><p>280€</p></div>
+          </div>
+        </article>
+
+        <article class="card clickable" onclick="openLightbox('Boucles Étoile', 'Collection Ombre', 'Argent 925, zircons noirs', '145€', 'Puces d\'oreilles en forme d\'étoile avec micro-pavage de zircons noirs. Discrets et raffinés.')">
+          <div class="card-image"></div>
+          <div class="card-info">
+            <div class="card-info-left">
+              <p>Boucles Étoile</p><p>Argent, zircons noirs</p><p>Puces 8mm</p>
+            </div>
+            <div class="card-info-right"><p>145€</p></div>
+          </div>
+        </article>
+
+        <article class="card clickable" onclick="showPage('collection')">
+          <div class="card-info">
+            <div class="card-info-left">
+              <p>← Retour aux collections</p>
+            </div>
+          </div>
+        </article>
+      </section>
+    </section>
+
+    <!-- SUBPAGE: Collection Terre -->
+    <section class="page" id="page-collection-terre">
+      <section class="title-row">
+        <h1 class="main-title">Terre</h1>
+        <p class="type-label">Collection Automne</p>
+      </section>
+
+      <section class="cards-row">
+        <article class="card clickable" onclick="openLightbox('Bague Forêt', 'Collection Terre', 'Cuivre martelé, bois d\'olivier', '165€', 'Bague en cuivre martelé à la main avec incrustation de bois d\'olivier. Chaque pièce est unique.')">
+          <div class="card-image"></div>
+          <div class="card-info">
+            <div class="card-info-left">
+              <p>Bague Forêt</p><p>Cuivre, bois d'olivier</p><p>Taille 56</p>
+            </div>
+            <div class="card-info-right"><p>165€</p></div>
+          </div>
+        </article>
+
+        <article class="card clickable" onclick="openLightbox('Collier Racine', 'Collection Terre', 'Bronze, jaspe rouge', '220€', 'Pendentif organique en bronze avec jaspe rouge brut. Chaîne en laiton vieilli.')">
+          <div class="card-image"></div>
+          <div class="card-info">
+            <div class="card-info-left">
+              <p>Collier Racine</p><p>Bronze, jaspe rouge</p><p>Chaîne 55cm</p>
+            </div>
+            <div class="card-info-right"><p>220€</p></div>
+          </div>
+        </article>
+
+        <article class="card clickable" onclick="openLightbox('Bracelet Écorce', 'Collection Terre', 'Cuivre texturé, cordon cuir', '135€', 'Bracelet manchette en cuivre avec texture d\'écorce. Cordon en cuir naturel ajustable.')">
+          <div class="card-image"></div>
+          <div class="card-info">
+            <div class="card-info-left">
+              <p>Bracelet Écorce</p><p>Cuivre, cuir</p><p>Ajustable</p>
+            </div>
+            <div class="card-info-right"><p>135€</p></div>
+          </div>
+        </article>
+
+        <article class="card clickable" onclick="showPage('collection')">
+          <div class="card-info">
+            <div class="card-info-left">
+              <p>← Retour aux collections</p>
+            </div>
           </div>
         </article>
       </section>
@@ -287,7 +519,7 @@
       </section>
 
       <section class="cards-row">
-        <article class="card">
+        <article class="card clickable" onclick="showPage('category-bagues')">
           <div class="card-image"></div>
           <div class="card-info">
             <div class="card-info-left">
@@ -297,7 +529,7 @@
           </div>
         </article>
 
-        <article class="card">
+        <article class="card clickable" onclick="showPage('category-colliers')">
           <div class="card-image"></div>
           <div class="card-info">
             <div class="card-info-left">
@@ -307,7 +539,7 @@
           </div>
         </article>
 
-        <article class="card">
+        <article class="card clickable" onclick="showPage('category-bracelets')">
           <div class="card-image"></div>
           <div class="card-info">
             <div class="card-info-left">
@@ -317,33 +549,148 @@
           </div>
         </article>
 
-        <article class="card">
+      </section>
+    </section>
+
+    <!-- SUBPAGE: Catégorie Bagues -->
+    <section class="page" id="page-category-bagues">
+      <section class="title-row">
+        <h1 class="main-title">Bagues</h1>
+        <p class="type-label">Catégorie</p>
+      </section>
+
+      <section class="cards-row">
+        <article class="card clickable" onclick="openLightbox('Bague Soleil', 'Collection Lumière', 'Or 18k, citrine', '250€', 'Bague dorée ornée d\'une citrine taillée en poire. Pièce délicate inspirée par les premiers rayons du printemps.')">
           <div class="card-image"></div>
           <div class="card-info">
             <div class="card-info-left">
-              <p>Boucles d’oreilles</p><p>Studs & pendantes</p><p>Pierres fines</p>
+              <p>Bague Soleil</p><p>Or 18k, citrine</p><p>Taille ajustable</p>
             </div>
-            <div class="card-info-right"><p>VOIR</p></div>
+            <div class="card-info-right"><p>250€</p></div>
           </div>
         </article>
 
-        <article class="card">
+        <article class="card clickable" onclick="openLightbox('Bague Nuit', 'Collection Ombre', 'Argent 925, onyx noir', '195€', 'Bague en argent massif sertie d\'un onyx noir mat. Design minimaliste et intemporel.')">
           <div class="card-image"></div>
           <div class="card-info">
             <div class="card-info-left">
-              <p>Éditions limitées</p><p>Séries courtes</p><p>Pièces uniques</p>
+              <p>Bague Nuit</p><p>Argent 925, onyx</p><p>Taille 54</p>
             </div>
-            <div class="card-info-right"><p>VOIR</p></div>
+            <div class="card-info-right"><p>195€</p></div>
           </div>
         </article>
 
-        <article class="card">
+        <article class="card clickable" onclick="openLightbox('Bague Forêt', 'Collection Terre', 'Cuivre martelé, bois d\'olivier', '165€', 'Bague en cuivre martelé à la main avec incrustation de bois d\'olivier. Chaque pièce est unique.')">
           <div class="card-image"></div>
           <div class="card-info">
             <div class="card-info-left">
-              <p>Enfants</p><p>Bijoux ludiques</p><p>Matériaux adaptés</p>
+              <p>Bague Forêt</p><p>Cuivre, bois d'olivier</p><p>Taille 56</p>
             </div>
-            <div class="card-info-right"><p>VOIR</p></div>
+            <div class="card-info-right"><p>165€</p></div>
+          </div>
+        </article>
+
+        <article class="card clickable back-button" onclick="showPage('categories')">
+          <div class="card-info">
+            <div class="card-info-left">
+              <p>← Retour aux catégories</p>
+            </div>
+          </div>
+        </article>
+      </section>
+    </section>
+
+    <!-- SUBPAGE: Catégorie Colliers -->
+    <section class="page" id="page-category-colliers">
+      <section class="title-row">
+        <h1 class="main-title">Colliers</h1>
+        <p class="type-label">Catégorie</p>
+      </section>
+
+      <section class="cards-row">
+        <article class="card clickable" onclick="openLightbox('Collier Aube', 'Collection Lumière', 'Or 14k, perles d\'eau douce', '320€', 'Collier fin avec pendentif en forme de goutte, orné de petites perles d\'eau douce. Chaîne réglable.')">
+          <div class="card-image"></div>
+          <div class="card-info">
+            <div class="card-info-left">
+              <p>Collier Aube</p><p>Or 14k, perles</p><p>Chaîne 45cm</p>
+            </div>
+            <div class="card-info-right"><p>320€</p></div>
+          </div>
+        </article>
+
+        <article class="card clickable" onclick="openLightbox('Collier Lune', 'Collection Ombre', 'Argent oxydé, pierre de lune', '280€', 'Pendentif en forme de croissant avec pierre de lune iridescente. Chaîne argentée texturée.')">
+          <div class="card-image"></div>
+          <div class="card-info">
+            <div class="card-info-left">
+              <p>Collier Lune</p><p>Argent, pierre de lune</p><p>Chaîne 50cm</p>
+            </div>
+            <div class="card-info-right"><p>280€</p></div>
+          </div>
+        </article>
+
+        <article class="card clickable" onclick="openLightbox('Collier Racine', 'Collection Terre', 'Bronze, jaspe rouge', '220€', 'Pendentif organique en bronze avec jaspe rouge brut. Chaîne en laiton vieilli.')">
+          <div class="card-image"></div>
+          <div class="card-info">
+            <div class="card-info-left">
+              <p>Collier Racine</p><p>Bronze, jaspe rouge</p><p>Chaîne 55cm</p>
+            </div>
+            <div class="card-info-right"><p>220€</p></div>
+          </div>
+        </article>
+
+        <article class="card clickable back-button" onclick="showPage('categories')">
+          <div class="card-info">
+            <div class="card-info-left">
+              <p>← Retour aux catégories</p>
+            </div>
+          </div>
+        </article>
+      </section>
+    </section>
+
+    <!-- SUBPAGE: Catégorie Bracelets -->
+    <section class="page" id="page-category-bracelets">
+      <section class="title-row">
+        <h1 class="main-title">Bracelets</h1>
+        <p class="type-label">Catégorie</p>
+      </section>
+
+      <section class="cards-row">
+        <article class="card clickable" onclick="openLightbox('Bracelet Éclat', 'Collection Lumière', 'Or jaune, quartz rose', '180€', 'Bracelet fin avec trois petites pierres de quartz rose. Fermoir discret et élégant.')">
+          <div class="card-image"></div>
+          <div class="card-info">
+            <div class="card-info-left">
+              <p>Bracelet Éclat</p><p>Or jaune, quartz rose</p><p>Longueur 18cm</p>
+            </div>
+            <div class="card-info-right"><p>180€</p></div>
+          </div>
+        </article>
+
+        <article class="card clickable" onclick="openLightbox('Bracelet Écorce', 'Collection Terre', 'Cuivre texturé, cordon cuir', '135€', 'Bracelet manchette en cuivre avec texture d\'écorce. Cordon en cuir naturel ajustable.')">
+          <div class="card-image"></div>
+          <div class="card-info">
+            <div class="card-info-left">
+              <p>Bracelet Écorce</p><p>Cuivre, cuir</p><p>Ajustable</p>
+            </div>
+            <div class="card-info-right"><p>135€</p></div>
+          </div>
+        </article>
+
+        <article class="card clickable" onclick="openLightbox('Bracelet Chaîne', 'Collection Ombre', 'Argent 925, maillons carrés', '210€', 'Bracelet chaîne en argent massif avec maillons carrés. Fermoir mousqueton.')">
+          <div class="card-image"></div>
+          <div class="card-info">
+            <div class="card-info-left">
+              <p>Bracelet Chaîne</p><p>Argent 925</p><p>Longueur 19cm</p>
+            </div>
+            <div class="card-info-right"><p>210€</p></div>
+          </div>
+        </article>
+
+        <article class="card clickable back-button" onclick="showPage('categories')">
+          <div class="card-info">
+            <div class="card-info-left">
+              <p>← Retour aux catégories</p>
+            </div>
           </div>
         </article>
       </section>
@@ -358,7 +705,6 @@
 
       <section class="cards-row">
         <article class="card">
-          <div class="card-image"></div>
           <div class="card-info">
             <div class="card-info-left">
               <p>Étape 1</p><p>Sélection des pièces</p><p>Références & quantités</p>
@@ -368,7 +714,6 @@
         </article>
 
         <article class="card">
-          <div class="card-image"></div>
           <div class="card-info">
             <div class="card-info-left">
               <p>Étape 2</p><p>Coordonnées</p><p>Nom, adresse, contact</p>
@@ -378,7 +723,6 @@
         </article>
 
         <article class="card">
-          <div class="card-image"></div>
           <div class="card-info">
             <div class="card-info-left">
               <p>Étape 3</p><p>Validation</p><p>Devis & délais</p>
@@ -398,7 +742,6 @@
 
       <section class="cards-row">
         <article class="card">
-          <div class="card-image"></div>
           <div class="card-info">
             <div class="card-info-left">
               <p>Email</p><p>prudence@example.com</p><p>Réponse sous 24h</p>
@@ -408,7 +751,6 @@
         </article>
 
         <article class="card">
-          <div class="card-image"></div>
           <div class="card-info">
             <div class="card-info-left">
               <p>Instagram</p><p>@prudence_bijoux</p><p>Nouvelles pièces</p>
@@ -418,7 +760,6 @@
         </article>
 
         <article class="card">
-          <div class="card-image"></div>
           <div class="card-info">
             <div class="card-info-left">
               <p>Téléphone</p><p>06 00 00 00 00</p><p>Sur rendez-vous</p>
@@ -432,11 +773,32 @@
   </div>
 </div>
 
+<!-- Lightbox -->
+<div class="lightbox" id="lightbox">
+  <div class="lightbox-content">
+    <button class="lightbox-close" onclick="closeLightbox()">✕</button>
+    <div class="lightbox-image"></div>
+    <div class="lightbox-text">
+      <div class="lightbox-info-top">
+        <h2 class="lightbox-title" id="lightbox-title"></h2>
+        <div class="lightbox-details" id="lightbox-details"></div>
+      </div>
+      <div class="lightbox-description" id="lightbox-description"></div>
+    </div>
+  </div>
+</div>
+
 <script>
   const pages = {
     menu: document.getElementById('page-menu'),
     collection: document.getElementById('page-collection'),
+    'collection-lumiere': document.getElementById('page-collection-lumiere'),
+    'collection-ombre': document.getElementById('page-collection-ombre'),
+    'collection-terre': document.getElementById('page-collection-terre'),
     categories: document.getElementById('page-categories'),
+    'category-bagues': document.getElementById('page-category-bagues'),
+    'category-colliers': document.getElementById('page-category-colliers'),
+    'category-bracelets': document.getElementById('page-category-bracelets'),
     commande: document.getElementById('page-commande'),
     contact: document.getElementById('page-contact'),
   };
@@ -458,6 +820,32 @@
 
   const hash = window.location.hash.replace('#', '');
   if (hash && pages[hash]) showPage(hash);
+
+  function openLightbox(title, collection, materials, price, description) {
+    const lightbox = document.getElementById('lightbox');
+    const titleEl = document.getElementById('lightbox-title');
+    const detailsEl = document.getElementById('lightbox-details');
+    const descriptionEl = document.getElementById('lightbox-description');
+
+    titleEl.textContent = title;
+    detailsEl.innerHTML = `
+      <p><strong>Collection:</strong> ${collection}</p>
+      <p><strong>Matériaux:</strong> ${materials}</p>
+      <p><strong>Prix:</strong> ${price}</p>
+    `;
+    descriptionEl.innerHTML = `<p>${description}</p>`;
+
+    lightbox.classList.add('active');
+  }
+
+  function closeLightbox() {
+    document.getElementById('lightbox').classList.remove('active');
+  }
+
+  // Close lightbox on background click
+  document.getElementById('lightbox').addEventListener('click', function(e) {
+    if (e.target === this) closeLightbox();
+  });
 </script>
 
 </body>
