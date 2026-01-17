@@ -2,483 +2,462 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <title>Photographe – Mariage, Couple & Famille</title>
+  <title>Prudence Bijoux</title>
+
+  <!-- Polices -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bakbak+One&family=Hedvig+Letters+Sans&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Gravitas+One&family=Hedvig+Letters+Sans&display=swap" rel="stylesheet">
+
   <style>
     :root {
-      --bg-main: #FFF9FB;
-      --blue-soft: #C8E0FD;
-      --pink-soft: #FFD1DC;
-      --text-main: #1f2933;
-      --text-muted: #6b7786;
-      --card-bg: #ffffff;
-      --shadow-soft: 0 14px 40px rgba(15, 23, 42, 0.08);
+      --bg: #EEE8D2;
+      --card-bg: #E2E2E2;
+      --text: #02194D;
     }
 
     * {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-  font-family: "Hedvig Letters Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-}
-
-/* Titres */
-h1, h2, h3 {
-  font-family: "Bakbak One", system-ui, sans-serif;
-  letter-spacing: 0.08em;
-}
-
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
     body {
-      background: var(--bg-main);
-      color: var(--text-main);
-      line-height: 1.6;
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    header {
-      background: linear-gradient(90deg, var(--blue-soft), var(--pink-soft));
-      color: #111827;
-      padding: 0.9rem 0;
-      margin-bottom: 1.5rem;
-    }
-
-    .navbar {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 0 1.5rem;
+      background: #EEE8D2;
+      height: 100vh;
+      width: 100vw;
       display: flex;
-      align-items: center;
+      align-items: flex-start;
+      justify-content: center;
+      font-family: "Hedvig Letters Sans", system-ui, sans-serif;
+      color: var(--text);
+      overflow: hidden;
+    }
+
+    .artboard {
+      position: relative;
+      aspect-ratio: 1728 / 1117;
+      width: min(100vw, 100vh * 1728 / 1117);
+      height: 100%;
+      background: var(--bg);
+      overflow: hidden;
+    }
+
+    .artboard-inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      padding: 3.5% 3.5%;
+      overflow: auto;
+      scrollbar-width: none;
+    }
+    .artboard-inner::-webkit-scrollbar { display: none; }
+
+    .top-bar {
+      display: flex;
       justify-content: space-between;
+      align-items: flex-start;
+      font-size: 1.5vmin;
+      letter-spacing: 0.14em;
+      margin-bottom: 6%;
     }
 
-    .navbar-brand {
-      font-weight: 600;
-      letter-spacing: 0.06em;
-      font-size: 0.95rem;
-      text-transform: uppercase;
-    }
-
-    .nav-links {
+    .top-left,
+    .top-right {
       display: flex;
-      gap: 0.8rem;
-      font-size: 0.9rem;
+      gap: 6vmin;
     }
 
-    .nav-links a {
-      padding: 0.35rem 0.8rem;
-      border-radius: 999px;
-      background: transparent;
+    .top-link {
+      background: none;
+      border: none;
+      color: var(--text);
+      font: inherit;
+      cursor: pointer;
     }
 
-    .nav-links a:hover {
-      background: trasparent;
+    .top-link[data-page-active="true"] {
+      text-decoration: underline;
     }
 
-    main {
-      max-width: 1100px;
-      margin: 0 auto 3rem;
-      padding: 0 1.5rem;
+    /* pages internes */
+    .page { display: none; }
+    .page.active { display: block; }
+
+    .title-row {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      margin-bottom: 12%;
     }
 
-    .page {
-      padding-top: 50px;
-      display: none;
-      animation: fade 0.25s ease-in-out;
+    .main-title {
+      font-family: "Gravitas One", system-ui, serif;
+      font-size: 10vmin;
+      line-height: 0.9;
+      font-variation-settings: "wdth" 150;
     }
 
-    .page.active {
-      display: block;
+    .type-label {
+      font-family: "Hedvig Letters Sans", system-ui, sans-serif;
+      text-transform: uppercase;
+      font-size: 1.5vmin;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      margin-top: 47px;
+      margin-left: 33%;
     }
 
-    @keyframes fade {
-      from { opacity: 0; transform: translateY(4px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    .page-header {
-      margin-bottom: 2rem;
-    }
-
-    .page-header h1 {
-      font-size: 2rem;
-      margin-bottom: 0.4rem;
-    }
-
-    .page-header p {
-      color: var(--text-muted);
-    }
-
-    .hero {
+    .cards-row {
       display: grid;
-      grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
-      gap: 2.5rem;
-      align-items: center;
-      margin-bottom: 3rem;
-    }
-
-    .hero h1 {
-      font-size: 2.3rem;
-      margin-bottom: 1rem;
-    }
-
-    .hero p {
-      margin-bottom: 1.6rem;
-      color: var(--text-muted);
-    }
-
-    .hero-buttons a {
-      display: inline-block;
-      padding: 0.7rem 1.4rem;
-      border-radius: 999px;
-      font-size: 0.95rem;
-    }
-
-    .btn-primary {
-      background: #111827;
-      color: #f9fafb;
-    }
-
-    .btn-outline {
-      border: 1px solid #111827;
-      color: #111827;
-      margin-left: 0.6rem;
-      background: transparent;
-    }
-
-.hero-image {
-  width: 100%;
-  height: 300px; /* important sinon le div peut faire 0px de haut */
-  background-image: url("IMG-20260109-WA0012.jpg");
-  background-size: cover;
-  background-position: center;
-  border-radius: 1.4rem;
-}
-
-
-    .section-title {
-      font-size: 1.6rem;
-      margin-bottom: 0.5rem;
-    }
-
-    .section-subtitle {
-      color: var(--text-muted);
-      margin-bottom: 1.6rem;
-    }
-
-    .grid-3 {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-      gap: 1.6rem;
+      grid-template-columns: repeat(3, 3fr);
+      gap: 3%;
+      margin-bottom: 30px;
+      margin-top: -40px;
     }
 
     .card {
-      background: var(--card-bg);
-      border-radius: 0.9rem;
-      padding: 1rem;
-      box-shadow: var(--shadow-soft);
-      border: 1px solid rgba(200, 224, 253, 0.6);
-    }
-
-    .card img {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
       width: 100%;
-      border-radius: 0.75rem;
-      margin-bottom: 0.75rem;
-      aspect-ratio: 4 / 3;
-      object-fit: cover;
+      aspect-ratio: 6/7;
     }
 
-    .card h3 {
-      margin-bottom: 0.35rem;
-      font-size: 1.1rem;
+    .card-image {
+      aspect-ratio: 1/1;
+      background: #02194D;
     }
 
-    .card p {
-      font-size: 0.95rem;
-      color: var(--text-muted);
+    .card-info {
+      display: flex;
+      justify-content: space-between;
+      font-size: 1.7vmin;
+      margin-top: 0.8vmin;
     }
 
-    .price-tag {
-      display: inline-block;
-      padding: 0.25rem 0.7rem;
-      border-radius: 999px;
-      background: rgba(255, 209, 220, 0.4);
-      font-size: 0.85rem;
-      margin-bottom: 0.5rem;
+    .card-info-left p + p {
+      margin-top: 0.1vmin;
     }
 
-    .form-wrapper {
-      max-width: 720px;
-      margin: 0 auto;
-      background: #ffffff;
-      padding: 1rem;
-      border-radius: 0.9rem;
-      box-shadow: var(--shadow-soft);
-      border: 1px solid rgba(200, 224, 253, 0.7);
+    .desc {
+      font-size: 1.7vmin;
+      line-height: 1.6;
     }
 
-    .form-wrapper iframe {
-      width: 100%;
-      border: 0;
-    }
-
-    footer {
-      border-top: 1px solid rgba(200, 224, 253, 0.8);
-      padding: 1.5rem 0;
-      text-align: center;
-      font-size: 0.85rem;
-      color: #94a3b8;
-      background: #ffffff;
-    }
-
-    @media (max-width: 768px) {
-      .hero {
-        grid-template-columns: 1fr;
-      }
-
-      main {
-        padding: 0 1.2rem;
-      }
-
-      .nav-links {
-        font-size: 0.85rem;
-      }
-    }
   </style>
 </head>
 <body>
 
-<header>
-  <div class="navbar">
-    <div class="navbar-brand">Soazig de Kermenguy</div>
-    <nav class="nav-links">
-      <a href="#accueil" data-page="accueil">Accueil</a>
-      <a href="#portfolio" data-page="portfolio">Portfolio</a>
-      <a href="#formules" data-page="formules">Formules</a>
-      <a href="#contact" data-page="contact">Contact</a>
-    </nav>
-  </div>
-</header>
+<div class="artboard">
+  <div class="artboard-inner">
 
-<main>
-  <!-- PAGE ACCUEIL -->
-  <section id="accueil" class="page active">
-    <div class="hero">
-      <div>
-        <h1>Photographe de mariage</h1>
-        <p>
-Description 
-        </p>
-        <div class="hero-buttons">
-          <a href="#portfolio" data-page="portfolio" class="btn-primary">Voir le portfolio</a>
-          <a href="#formules" data-page="formules" class="btn-outline">Découvrir les formules</a>
-        </div>
+    <!-- TOP BAR -->
+    <header class="top-bar">
+      <div class="top-left">
+        <button class="top-link" data-page-btn="menu" data-page-active="true">
+         [ ACCUEIL ]
+        </button>
+        <button class="top-link" data-page-btn="collection">
+         [ COLLECTIONS ]
+        </button>
+        <button class="top-link" data-page-btn="categories">
+         [ CATEGORIES ]
+        </button>
       </div>
-      <div class="hero-image"></div>
-    </div>
-  </section>
+      <div class="top-right">
+        <button class="top-link" data-page-btn="commande">
+         [ COMMANDER ]
+        </button>
+        <button class="top-link" data-page-btn="contact">
+         [ CONTACT ]
+        </button>
+      </div>
+    </header>
 
-  <!-- PAGE PORTFOLIO (3 entrées vers sous-pages) -->
-  <section id="portfolio" class="page">
-    <div class="page-header">
-      <h1>Portfolio</h1>
-      <p>Trois univers, trois façons de raconter vos moments.</p>
-    </div>
+    <!-- PAGE ACCUEIL (active par défaut) -->
+    <section class="page active" id="page-menu">
+      <section class="title-row">
+        <h1 class="main-title">Accueil</h1>
+        <p class="type-label">Bienvenue !</p>
+      </section>
 
-    <div class="grid-3">
-      <article class="card">
-        <img src="images/mariage.jpg" alt="Photo de mariage">
-        <h3>Mariage</h3>
-        <p>Reportages complets pour revivre chaque instant de votre journée.</p>
-        <a href="#mariage" data-page="mariage">Voir les mariages →</a>
-      </article>
+      <section class="cards-row">
+        <article class="card">
+          <div class="desc">
+            Prudence Bijoux a été créée pour proposer des bijoux fait mains, pour ceux qui aiment le beau et le manuel. (prstn de la marque)
+(texte blanco)
+          </div>
+        </article>
 
-      <article class="card">
-        <img src="images/couple.jpg" alt="Photo de couple">
-        <h3>Couple</h3>
-        <p>Séances intimistes et naturelles, en ville ou en pleine nature.</p>
-        <a href="#couple" data-page="couple">Voir les couples →</a>
-      </article>
+        <article class="card">
+          <div class="desc">
+            Qui suis-je ? Prudence, tel age, tel etudes, etc (prstn Prudence personelle)
+(texte blanco)
+          </div>
+        </article>
 
-      <article class="card">
-        <img src="images/famille.jpg" alt="Photo de famille">
-        <h3>Famille</h3>
-        <p>Moments de vie avec vos enfants, sans poses figées.</p>
-        <a href="#famille" data-page="famille">Voir les familles →</a>
-      </article>
-    </div>
-  </section>
+        <article class="card">
+          <div class="card-image"></div>
+          <div class="card-info">
+            <div class="card-info-left">
+              <p>Prudence Bijoux</p><p>Marque de bijoux</p><p>Créée en 2025</p>
+            </div>
+            <div class="card-info-right"><p>FR</p></div>
+          </div>
+        </article>
+      </section>
+    </section>
 
-  <!-- PAGE MARIAGE -->
-  <section id="mariage" class="page">
-    <div class="page-header">
-      <h1>Mariages</h1>
-      <p>Un regard documentaire pour raconter votre journée du début à la fin.</p>
-    </div>
+    <!-- PAGE COLLECTIONS -->
+    <section class="page" id="page-collection">
+      <section class="title-row">
+        <h1 class="main-title">Collections</h1>
+        <p class="type-label">Type: Bijoux</p>
+      </section>
 
-    <div class="grid-3">
-      <article class="card">
-        <img src="images/mariage-1.jpg" alt="Mariage 1">
-        <h3>Préparatifs</h3>
-        <p>Moments de complicité avant la cérémonie, entre émotions et détails.</p>
-      </article>
-      <article class="card">
-        <img src="images/mariage-2.jpg" alt="Mariage 2">
-        <h3>Cérémonie</h3>
-        <p>Échanges de vœux, regards, larmes et sourires partagés.</p>
-      </article>
-      <article class="card">
-        <img src="images/mariage-3.jpg" alt="Mariage 3">
-        <h3>Couple</h3>
-        <p>Une parenthèse à deux, en lumière douce, pour des images intemporelles.</p>
-      </article>
-    </div>
-  </section>
+      <section class="cards-row">
+        <article class="card">
+          <div class="card-image"></div>
+          <div class="card-info">
+            <div class="card-info-left">
+              <p>Nom</p><p>Collection</p><p>Matériaux</p>
+            </div>
+            <div class="card-info-right"><p>PRIX</p></div>
+          </div>
+        </article>
 
-  <!-- PAGE COUPLE -->
-  <section id="couple" class="page">
-    <div class="page-header">
-      <h1>Couples</h1>
-      <p>Des séances pensées pour raconter votre lien, sans poses forcées.</p>
-    </div>
+        <article class="card">
+          <div class="card-image"></div>
+          <div class="card-info">
+            <div class="card-info-left">
+              <p>Nom</p><p>Collection</p><p>Matériaux</p>
+            </div>
+            <div class="card-info-right"><p>PRIX</p></div>
+          </div>
+        </article>
 
-    <div class="grid-3">
-      <article class="card">
-        <img src="images/couple-1.jpg" alt="Couple 1">
-        <h3>En ville</h3>
-        <p>Ambiance urbaine, lignes graphiques et jeux de lumière.</p>
-      </article>
-      <article class="card">
-        <img src="images/couple-2.jpg" alt="Couple 2">
-        <h3>En nature</h3>
-        <p>Balades en forêt ou au bord de l'eau, dans une lumière pastel.</p>
-      </article>
-      <article class="card">
-        <img src="images/couple-3.jpg" alt="Couple 3">
-        <h3>À la maison</h3>
-        <p>Moments du quotidien, café, musique, rires et tendresse.</p>
-      </article>
-    </div>
-  </section>
+        <article class="card">
+          <div class="card-image"></div>
+          <div class="card-info">
+            <div class="card-info-left">
+              <p>Nom</p><p>Collection</p><p>Matériaux</p>
+            </div>
+            <div class="card-info-right"><p>PRIX</p></div>
+          </div>
+        </article>
 
-  <!-- PAGE FAMILLE -->
-  <section id="famille" class="page">
-    <div class="page-header">
-      <h1>Familles</h1>
-      <p>Des souvenirs vivants de votre vie de famille telle qu'elle est.</p>
-    </div>
+        <article class="card">
+          <div class="card-image"></div>
+          <div class="card-info">
+            <div class="card-info-left">
+              <p>Nom</p><p>Collection</p><p>Matériaux</p>
+            </div>
+            <div class="card-info-right"><p>PRIX</p></div>
+          </div>
+        </article>
 
-    <div class="grid-3">
-      <article class="card">
-        <img src="images/famille-1.jpg" alt="Famille 1">
-        <h3>À la maison</h3>
-        <p>Jeux, câlins, repas... les petits rituels qui comptent.</p>
-      </article>
-      <article class="card">
-        <img src="images/famille-2.jpg" alt="Famille 2">
-        <h3>En extérieur</h3>
-        <p>Courir, sauter, se salir : des photos pleines de vie.</p>
-      </article>
-      <article class="card">
-        <img src="images/famille-3.jpg" alt="Famille 3">
-        <h3>Moments calmes</h3>
-        <p>Histoires du soir, siestes et instants suspendus.</p>
-      </article>
-    </div>
-  </section>
+        <article class="card">
+          <div class="card-image"></div>
+          <div class="card-info">
+            <div class="card-info-left">
+              <p>Nom</p><p>Collection</p><p>Matériaux</p>
+            </div>
+            <div class="card-info-right"><p>PRIX</p></div>
+          </div>
+        </article>
 
-  <!-- PAGE FORMULES -->
-  <section id="formules" class="page">
-    <div class="page-header">
-      <h1>Formules</h1>
-      <p>Des offres simples et personnalisables pour s'adapter à vos besoins.</p>
-    </div>
+        <article class="card">
+          <div class="card-image"></div>
+          <div class="card-info">
+            <div class="card-info-left">
+              <p>Nom</p><p>Collection</p><p>Matériaux</p>
+            </div>
+            <div class="card-info-right"><p>PRIX</p></div>
+          </div>
+        </article>
+      </section>
+    </section>
 
-    <div class="grid-3">
-      <article class="card">
-image
-        <h3>Mariage</h3>
-        <p>
-Description formule mariage
-        </p>
-      </article>
+    <!-- PAGE CATEGORIES -->
+    <section class="page" id="page-categories">
+      <section class="title-row">
+        <h1 class="main-title">Catégories</h1>
+        <p class="type-label">Type: Bagues</p>
+      </section>
 
-      <article class="card">
-image
-        <h3>Couple</h3>
-        <p>
-Description formule couple</p>
-      </article>
+      <section class="cards-row">
+        <article class="card">
+          <div class="card-image"></div>
+          <div class="card-info">
+            <div class="card-info-left">
+              <p>Bagues</p><p>Collections variées</p><p>Or, argent, acier</p>
+            </div>
+            <div class="card-info-right"><p>VOIR</p></div>
+          </div>
+        </article>
 
-      <article class="card">
-image
-        <h3>Famille</h3>
-        <p>
-Description formule famille
-        </p>
-      </article>
-    </div>
-  </section>
+        <article class="card">
+          <div class="card-image"></div>
+          <div class="card-info">
+            <div class="card-info-left">
+              <p>Colliers</p><p>Pendentifs & chaînes</p><p>Métaux précieux</p>
+            </div>
+            <div class="card-info-right"><p>VOIR</p></div>
+          </div>
+        </article>
 
-  <!-- PAGE CONTACT -->
-  <section id="contact" class="page">
-    <div class="page-header">
-      <h1>Contact</h1>
-      <p>Parlez de votre projet, de votre date et de vos envies.</p>
-    </div>
+        <article class="card">
+          <div class="card-image"></div>
+          <div class="card-info">
+            <div class="card-info-left">
+              <p>Bracelets</p><p>Cuffs & chaînes</p><p>Mélange de matières</p>
+            </div>
+            <div class="card-info-right"><p>VOIR</p></div>
+          </div>
+        </article>
 
-    <div class="form-wrapper">
-      <!-- Remplace SRC_DU_GOOGLE_FORM par le lien d'intégration de ton Google Forms -->
-      <iframe
-        src="https://docs.google.com/forms/d/e/SRC_DU_GOOGLE_FORM/viewform?embedded=true"
-        height="650"
-        frameborder="0"
-        marginheight="0"
-        marginwidth="0">
-        Chargement…
-      </iframe>
-    </div>
-  </section>
-</main>
+        <article class="card">
+          <div class="card-image"></div>
+          <div class="card-info">
+            <div class="card-info-left">
+              <p>Boucles d’oreilles</p><p>Studs & pendantes</p><p>Pierres fines</p>
+            </div>
+            <div class="card-info-right"><p>VOIR</p></div>
+          </div>
+        </article>
 
-<footer>
-  <p> © 2026 Soazig de Kermenguy – Tous droits réservés </p>
-  <p> <a href="https://wandrillefm.vercel.app"> Site fait par Wandrille.fm </a></p>
+        <article class="card">
+          <div class="card-image"></div>
+          <div class="card-info">
+            <div class="card-info-left">
+              <p>Éditions limitées</p><p>Séries courtes</p><p>Pièces uniques</p>
+            </div>
+            <div class="card-info-right"><p>VOIR</p></div>
+          </div>
+        </article>
 
-</footer>
+        <article class="card">
+          <div class="card-image"></div>
+          <div class="card-info">
+            <div class="card-info-left">
+              <p>Enfants</p><p>Bijoux ludiques</p><p>Matériaux adaptés</p>
+            </div>
+            <div class="card-info-right"><p>VOIR</p></div>
+          </div>
+        </article>
+      </section>
+    </section>
+
+    <!-- PAGE COMMANDE -->
+    <section class="page" id="page-commande">
+      <section class="title-row">
+        <h1 class="main-title">Commande</h1>
+        <p class="type-label">Vous avez fait vos choix ?</p>
+      </section>
+
+      <section class="cards-row">
+        <article class="card">
+          <div class="card-image"></div>
+          <div class="card-info">
+            <div class="card-info-left">
+              <p>Étape 1</p><p>Sélection des pièces</p><p>Références & quantités</p>
+            </div>
+            <div class="card-info-right"><p>→</p></div>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-image"></div>
+          <div class="card-info">
+            <div class="card-info-left">
+              <p>Étape 2</p><p>Coordonnées</p><p>Nom, adresse, contact</p>
+            </div>
+            <div class="card-info-right"><p>→</p></div>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-image"></div>
+          <div class="card-info">
+            <div class="card-info-left">
+              <p>Étape 3</p><p>Validation</p><p>Devis & délais</p>
+            </div>
+            <div class="card-info-right"><p>→</p></div>
+          </div>
+        </article>
+      </section>
+    </section>
+
+    <!-- PAGE CONTACT -->
+    <section class="page" id="page-contact">
+      <section class="title-row">
+        <h1 class="main-title">Contact</h1>
+        <p class="type-label">Une question ?</p>
+      </section>
+
+      <section class="cards-row">
+        <article class="card">
+          <div class="card-image"></div>
+          <div class="card-info">
+            <div class="card-info-left">
+              <p>Email</p><p>prudence@example.com</p><p>Réponse sous 24h</p>
+            </div>
+            <div class="card-info-right"><p>@</p></div>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-image"></div>
+          <div class="card-info">
+            <div class="card-info-left">
+              <p>Instagram</p><p>@prudence_bijoux</p><p>Nouvelles pièces</p>
+            </div>
+            <div class="card-info-right"><p>Instagram</p></div>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-image"></div>
+          <div class="card-info">
+            <div class="card-info-left">
+              <p>Téléphone</p><p>06 00 00 00 00</p><p>Sur rendez-vous</p>
+            </div>
+            <div class="card-info-right"><p>Téléphone</p></div>
+          </div>
+        </article>
+      </section>
+    </section>
+
+  </div>
+</div>
 
 <script>
-  const links = document.querySelectorAll('[data-page]');
-  const pages = document.querySelectorAll('.page');
+  const pages = {
+    menu: document.getElementById('page-menu'),
+    collection: document.getElementById('page-collection'),
+    categories: document.getElementById('page-categories'),
+    commande: document.getElementById('page-commande'),
+    contact: document.getElementById('page-contact'),
+  };
 
-  function showPage(id) {
-    pages.forEach(page => {
-      page.classList.toggle('active', page.id === id);
+  const buttons = document.querySelectorAll('[data-page-btn]');
+
+  function showPage(name) {
+    Object.values(pages).forEach(p => p.classList.remove('active'));
+    (pages[name] || pages.menu).classList.add('active');
+
+    buttons.forEach(b => {
+      b.dataset.pageActive = (b.dataset.pageBtn === name) ? 'true' : 'false';
     });
   }
 
-  links.forEach(link => {
-    link.addEventListener('click', (e) => {
-      const target = link.getAttribute('data-page');
-      if (target) {
-        e.preventDefault();
-        showPage(target);
-        history.replaceState(null, '', '#' + target);
-      }
-    });
+  buttons.forEach(btn => {
+    btn.addEventListener('click', () => showPage(btn.dataset.pageBtn));
   });
 
-  // Affiche la bonne page si l'URL a déjà un hash
   const hash = window.location.hash.replace('#', '');
-  if (hash) {
-    showPage(hash);
-  }
+  if (hash && pages[hash]) showPage(hash);
 </script>
 
 </body>
