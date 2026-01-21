@@ -145,7 +145,22 @@
       font-size: 1.7vmin;
       line-height: 1.6;
     }
-
+    
+    .footer {
+    font-size: 1.7vmin;
+    line-height: 1.6;
+    position: fixed;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1001;
+    color: var(--text); /* Uses the text color variable */
+    padding: 0.5vmin 2vmin;
+    text-align: center;
+    letter-spacing: 0.1em;
+    mix-blend-mode: difference; /* This inverts based on background */
+    filter: invert(1);
+  }
     /* Lightbox */
     .lightbox {
       display: none;
@@ -258,7 +273,6 @@
       aspect-ratio: auto;
       height: auto;
       min-height: auto;
-      margin-bottom: -14px;
     }
 
   </style>
@@ -303,14 +317,14 @@
           <div class="card-image"></div>
           <div class="desc">
             Prudence Bijoux a été créée pour proposer des bijoux fait mains, pour ceux qui aiment le beau et le manuel. (prstn de la marque)
-(texte blanco)
+(texte blanco) 3 LIGNES
           </div>
         </article>
 
         <article class="card">
           <div class="desc">
             Qui suis-je ? Prudence, tel age, tel etudes, etc (prstn Prudence personelle)
-(texte blanco)
+(texte blanco) 3 LIGNES
           </div>
           <div class="card-image"></div>
         </article>
@@ -699,38 +713,10 @@
     <!-- PAGE COMMANDE -->
     <section class="page" id="page-commande">
       <section class="title-row">
-        <h1 class="main-title">Commande</h1>
-        <p class="type-label">Vous avez fait vos choix ?</p>
+        <h1 class="main-title">Commander</h1>
+        <p class="type-label">Après validation</p>
       </section>
-
-      <section class="cards-row">
-        <article class="card">
-          <div class="card-info">
-            <div class="card-info-left">
-              <p>Étape 1</p><p>Sélection des pièces</p><p>Références & quantités</p>
-            </div>
-            <div class="card-info-right"><p>→</p></div>
-          </div>
-        </article>
-
-        <article class="card">
-          <div class="card-info">
-            <div class="card-info-left">
-              <p>Étape 2</p><p>Coordonnées</p><p>Nom, adresse, contact</p>
-            </div>
-            <div class="card-info-right"><p>→</p></div>
-          </div>
-        </article>
-
-        <article class="card">
-          <div class="card-info">
-            <div class="card-info-left">
-              <p>Étape 3</p><p>Validation</p><p>Devis & délais</p>
-            </div>
-            <div class="card-info-right"><p>→</p></div>
-          </div>
-        </article>
-      </section>
+     TALLY FORM
     </section>
 
     <!-- PAGE CONTACT -->
@@ -744,7 +730,7 @@
         <article class="card">
           <div class="card-info">
             <div class="card-info-left">
-              <p>Email</p><p>prudence@example.com</p><p>Réponse sous 24h</p>
+              <p>Email</p><p>prudence@gmail.com?</p><p>Réponse sous 24h</p>
             </div>
             <div class="card-info-right"><p>@</p></div>
           </div>
@@ -762,7 +748,7 @@
         <article class="card">
           <div class="card-info">
             <div class="card-info-left">
-              <p>Téléphone</p><p>06 00 00 00 00</p><p>Sur rendez-vous</p>
+              <p>Téléphone</p><p>06 00 00 00 00?</p><p>Sur rendez-vous</p>
             </div>
             <div class="card-info-right"><p>Téléphone</p></div>
           </div>
@@ -772,6 +758,8 @@
 
   </div>
 </div>
+
+<p class="footer">© 2025 Prudence Bijoux — Wandrille.fm</p>
 
 <!-- Lightbox -->
 <div class="lightbox" id="lightbox">
