@@ -94,7 +94,7 @@
 
     .main-title {
       font-family: "Gravitas One", system-ui, serif;
-      font-size: 9vmin;
+      font-size: 10vmin;
       line-height: 0.9;
       text-align: left;
     }
@@ -152,13 +152,7 @@
       aspect-ratio: 1/1;
       background: #02194D;
     }
-    
-.card-image img {
-  width: 100%;
-  aspect-ratio: 1/1;
-  object-fit: cover; /* comme un background-size: cover */
-  display: block;
-}
+
     .card-info {
       display: flex;
       justify-content: space-between;
@@ -169,17 +163,6 @@
     .card-info-left p + p {
       margin-top: 0.1vmin;
     }
-
-    @media (max-width: 768px) {
-  .cards-row {
-    grid-template-columns: 1fr;
-    margin-top: 0; /* optionnel, pour éviter le -40px sur mobile */
-  }
-
-  .card {
-    aspect-ratio: auto; /* évite les cartes trop hautes sur mobile */
-  }
-}
 
     .desc {
       font-size: 1.7vmin;
@@ -348,8 +331,7 @@
 
       <section class="cards-row">
         <article class="card">
-          <div class="card-image">
-            <img src="prudence-atelier.jpg"></div>
+          <div class="card-image"></div>
           <div class="desc">
             Prudence Bijoux a été créée pour proposer des bijoux fait mains, pour ceux qui aiment le beau et le manuel. (prstn de la marque)
 (texte blanco) 3 LIGNES
@@ -361,13 +343,11 @@
             Qui suis-je ? Prudence, tel age, tel etudes, etc (prstn Prudence personelle)
 (texte blanco) 3 LIGNES
           </div>
-          <div class="card-image">
-            <img src="images/prudence-atelier.jpg"></div>
+          <div class="card-image"></div>
         </article>
 
         <article class="card">
-          <div class="card-image">
-            <img src="images/prudence-atelier.jpg"></div>
+          <div class="card-image"></div>
           <div class="card-info">
             <div class="card-info-left">
               <p>Prudence Bijoux</p><p>Marque de bijoux</p><p>Créée en 2025</p>
@@ -387,8 +367,7 @@
 
       <section class="cards-row">
         <article class="card clickable" onclick="showPage('collection-lumiere')">
-          <div class="card-image">
-            <img src="images/prudence-atelier.jpg"></div>
+          <div class="card-image"></div>
           <div class="card-info">
             <div class="card-info-left">
               <p>Lumière</p><p>Collection Printemps</p><p>Or et pierres fines</p>
@@ -398,8 +377,7 @@
         </article>
 
         <article class="card clickable" onclick="showPage('collection-ombre')">
-          <div class="card-image">
-            <img src="images/prudence-atelier.jpg"></div>
+          <div class="card-image"></div>
           <div class="card-info">
             <div class="card-info-left">
               <p>Ombre</p><p>Collection Hiver</p><p>Argent et onyx</p>
@@ -409,8 +387,7 @@
         </article>
 
         <article class="card clickable" onclick="showPage('collection-terre')">
-          <div class="card-image">
-            <img src="images/prudence-atelier.jpg"></div>
+          <div class="card-image"></div>
           <div class="card-info">
             <div class="card-info-left">
               <p>Terre</p><p>Collection Automne</p><p>Cuivre et bois</p>
@@ -433,8 +410,7 @@
 
       <section class="cards-row">
         <article class="card clickable" onclick="openLightbox('Bague Soleil', 'Collection Lumière', 'Or 18k, citrine', '250€', 'Bague dorée ornée d\'une citrine taillée en poire. Pièce délicate inspirée par les premiers rayons du printemps.')">
-          <div class="card-image">
-            <img src="images/prudence-atelier.jpg"></div>
+          <div class="card-image"></div>
           <div class="card-info">
             <div class="card-info-left">
               <p>Bague Soleil</p><p>Or 18k, citrine</p><p>Taille ajustable</p>
@@ -444,8 +420,7 @@
         </article>
 
         <article class="card clickable" onclick="openLightbox('Collier Aube', 'Collection Lumière', 'Or 14k, perles d\'eau douce', '320€', 'Collier fin avec pendentif en forme de goutte, orné de petites perles d\'eau douce. Chaîne réglable.')">
-          <div class="card-image">
-            <img src="images/prudence-atelier.jpg"></div>
+          <div class="card-image"></div>
           <div class="card-info">
             <div class="card-info-left">
               <p>Collier Aube</p><p>Or 14k, perles</p><p>Chaîne 45cm</p>
@@ -455,8 +430,7 @@
         </article>
 
         <article class="card clickable" onclick="openLightbox('Bracelet Éclat', 'Collection Lumière', 'Or jaune, quartz rose', '180€', 'Bracelet fin avec trois petites pierres de quartz rose. Fermoir discret et élégant.')">
-          <div class="card-image">
-            <img src="images/prudence-atelier.jpg"></div>
+          <div class="card-image"></div>
           <div class="card-info">
             <div class="card-info-left">
               <p>Bracelet Éclat</p><p>Or jaune, quartz rose</p><p>Longueur 18cm</p>
@@ -479,8 +453,7 @@
 
       <section class="cards-row">
         <article class="card clickable" onclick="openLightbox('Bague Nuit', 'Collection Ombre', 'Argent 925, onyx noir', '195€', 'Bague en argent massif sertie d\'un onyx noir mat. Design minimaliste et intemporel.')">
-          <div class="card-image">
-            <img src="images/prudence-atelier.jpg"></div>
+          <div class="card-image"></div>
           <div class="card-info">
             <div class="card-info-left">
               <p>Bague Nuit</p><p>Argent 925, onyx</p><p>Taille 54</p>
@@ -490,8 +463,7 @@
         </article>
 
         <article class="card clickable" onclick="openLightbox('Collier Lune', 'Collection Ombre', 'Argent oxydé, pierre de lune', '280€', 'Pendentif en forme de croissant avec pierre de lune iridescente. Chaîne argentée texturée.')">
-          <div class="card-image">
-            <img src="images/prudence-atelier.jpg"></div>
+          <div class="card-image"></div>
           <div class="card-info">
             <div class="card-info-left">
               <p>Collier Lune</p><p>Argent, pierre de lune</p><p>Chaîne 50cm</p>
@@ -501,8 +473,7 @@
         </article>
 
         <article class="card clickable" onclick="openLightbox('Boucles Étoile', 'Collection Ombre', 'Argent 925, zircons noirs', '145€', 'Puces d\'oreilles en forme d\'étoile avec micro-pavage de zircons noirs. Discrets et raffinés.')">
-          <div class="card-image">
-            <img src="images/prudence-atelier.jpg"></div>
+          <div class="card-image"></div>
           <div class="card-info">
             <div class="card-info-left">
               <p>Boucles Étoile</p><p>Argent, zircons noirs</p><p>Puces 8mm</p>
@@ -525,8 +496,7 @@
 
       <section class="cards-row">
         <article class="card clickable" onclick="openLightbox('Bague Forêt', 'Collection Terre', 'Cuivre martelé, bois d\'olivier', '165€', 'Bague en cuivre martelé à la main avec incrustation de bois d\'olivier. Chaque pièce est unique.')">
-          <div class="card-image">
-            <img src="images/prudence-atelier.jpg"></div>
+          <div class="card-image"></div>
           <div class="card-info">
             <div class="card-info-left">
               <p>Bague Forêt</p><p>Cuivre, bois d'olivier</p><p>Taille 56</p>
@@ -536,8 +506,7 @@
         </article>
 
         <article class="card clickable" onclick="openLightbox('Collier Racine', 'Collection Terre', 'Bronze, jaspe rouge', '220€', 'Pendentif organique en bronze avec jaspe rouge brut. Chaîne en laiton vieilli.')">
-          <div class="card-image">
-            <img src="images/prudence-atelier.jpg"></div>
+          <div class="card-image"></div>
           <div class="card-info">
             <div class="card-info-left">
               <p>Collier Racine</p><p>Bronze, jaspe rouge</p><p>Chaîne 55cm</p>
@@ -547,8 +516,7 @@
         </article>
 
         <article class="card clickable" onclick="openLightbox('Bracelet Écorce', 'Collection Terre', 'Cuivre texturé, cordon cuir', '135€', 'Bracelet manchette en cuivre avec texture d\'écorce. Cordon en cuir naturel ajustable.')">
-          <div class="card-image">
-            <img src="images/prudence-atelier.jpg"></div>
+          <div class="card-image"></div>
           <div class="card-info">
             <div class="card-info-left">
               <p>Bracelet Écorce</p><p>Cuivre, cuir</p><p>Ajustable</p>
@@ -568,8 +536,7 @@
 
       <section class="cards-row">
         <article class="card clickable" onclick="showPage('category-bagues')">
-          <div class="card-image">
-            <img src="images/prudence-atelier.jpg"></div>
+          <div class="card-image"></div>
           <div class="card-info">
             <div class="card-info-left">
               <p>Bagues</p><p>Collections variées</p><p>Or, argent, acier</p>
@@ -579,8 +546,7 @@
         </article>
 
         <article class="card clickable" onclick="showPage('category-colliers')">
-          <div class="card-image">
-            <img src="images/prudence-atelier.jpg"></div>
+          <div class="card-image"></div>
           <div class="card-info">
             <div class="card-info-left">
               <p>Colliers</p><p>Pendentifs & chaînes</p><p>Métaux précieux</p>
@@ -590,8 +556,7 @@
         </article>
 
         <article class="card clickable" onclick="showPage('category-bracelets')">
-          <div class="card-image">
-            <img src="images/prudence-atelier.jpg"></div>
+          <div class="card-image"></div>
           <div class="card-info">
             <div class="card-info-left">
               <p>Bracelets</p><p>Cuffs & chaînes</p><p>Mélange de matières</p>
@@ -615,8 +580,7 @@
 
       <section class="cards-row">
         <article class="card clickable" onclick="openLightbox('Bague Soleil', 'Collection Lumière', 'Or 18k, citrine', '250€', 'Bague dorée ornée d\'une citrine taillée en poire. Pièce délicate inspirée par les premiers rayons du printemps.')">
-          <div class="card-image">
-            <img src="images/prudence-atelier.jpg"></div>
+          <div class="card-image"></div>
           <div class="card-info">
             <div class="card-info-left">
               <p>Bague Soleil</p><p>Or 18k, citrine</p><p>Taille ajustable</p>
@@ -626,8 +590,7 @@
         </article>
 
         <article class="card clickable" onclick="openLightbox('Bague Nuit', 'Collection Ombre', 'Argent 925, onyx noir', '195€', 'Bague en argent massif sertie d\'un onyx noir mat. Design minimaliste et intemporel.')">
-          <div class="card-image">
-            <img src="images/prudence-atelier.jpg"></div>
+          <div class="card-image"></div>
           <div class="card-info">
             <div class="card-info-left">
               <p>Bague Nuit</p><p>Argent 925, onyx</p><p>Taille 54</p>
@@ -637,8 +600,7 @@
         </article>
 
         <article class="card clickable" onclick="openLightbox('Bague Forêt', 'Collection Terre', 'Cuivre martelé, bois d\'olivier', '165€', 'Bague en cuivre martelé à la main avec incrustation de bois d\'olivier. Chaque pièce est unique.')">
-          <div class="card-image">
-            <img src="images/prudence-atelier.jpg"></div>
+          <div class="card-image"></div>
           <div class="card-info">
             <div class="card-info-left">
               <p>Bague Forêt</p><p>Cuivre, bois d'olivier</p><p>Taille 56</p>
@@ -661,9 +623,7 @@
 
       <section class="cards-row">
         <article class="card clickable" onclick="openLightbox('Collier Aube', 'Collection Lumière', 'Or 14k, perles d\'eau douce', '320€', 'Collier fin avec pendentif en forme de goutte, orné de petites perles d\'eau douce. Chaîne réglable.')">
-          <div class="card-image">
-            <img src="images/prudence-atelier.jpg">
-            <img src="images/prudence-atelier.jpg"></div>
+          <div class="card-image"></div>
           <div class="card-info">
             <div class="card-info-left">
               <p>Collier Aube</p><p>Or 14k, perles</p><p>Chaîne 45cm</p>
@@ -683,8 +643,7 @@
         </article>
 
         <article class="card clickable" onclick="openLightbox('Collier Racine', 'Collection Terre', 'Bronze, jaspe rouge', '220€', 'Pendentif organique en bronze avec jaspe rouge brut. Chaîne en laiton vieilli.')">
-          <div class="card-image">
-            <img src="images/prudence-atelier.jpg"></div>
+          <div class="card-image"></div>
           <div class="card-info">
             <div class="card-info-left">
               <p>Collier Racine</p><p>Bronze, jaspe rouge</p><p>Chaîne 55cm</p>
@@ -707,8 +666,7 @@
 
       <section class="cards-row">
         <article class="card clickable" onclick="openLightbox('Bracelet Éclat', 'Collection Lumière', 'Or jaune, quartz rose', '180€', 'Bracelet fin avec trois petites pierres de quartz rose. Fermoir discret et élégant.')">
-          <div class="card-image">
-            <img src="images/prudence-atelier.jpg"></div>
+          <div class="card-image"></div>
           <div class="card-info">
             <div class="card-info-left">
               <p>Bracelet Éclat</p><p>Or jaune, quartz rose</p><p>Longueur 18cm</p>
@@ -718,8 +676,7 @@
         </article>
 
         <article class="card clickable" onclick="openLightbox('Bracelet Écorce', 'Collection Terre', 'Cuivre texturé, cordon cuir', '135€', 'Bracelet manchette en cuivre avec texture d\'écorce. Cordon en cuir naturel ajustable.')">
-          <div class="card-image">
-            <img src="images/prudence-atelier.jpg"></div>
+          <div class="card-image"></div>
           <div class="card-info">
             <div class="card-info-left">
               <p>Bracelet Écorce</p><p>Cuivre, cuir</p><p>Ajustable</p>
@@ -729,8 +686,7 @@
         </article>
 
         <article class="card clickable" onclick="openLightbox('Bracelet Chaîne', 'Collection Ombre', 'Argent 925, maillons carrés', '210€', 'Bracelet chaîne en argent massif avec maillons carrés. Fermoir mousqueton.')">
-          <div class="card-image">
-            <img src="images/prudence-atelier.jpg"></div>
+          <div class="card-image"></div>
           <div class="card-info">
             <div class="card-info-left">
               <p>Bracelet Chaîne</p><p>Argent 925</p><p>Longueur 19cm</p>
