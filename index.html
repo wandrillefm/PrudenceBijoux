@@ -89,6 +89,7 @@
       align-items: flex-start;
       justify-content: space-between;
       margin-bottom: 12%;
+      position: relative; /* pour positionner le bouton retour */
     }
 
     .main-title {
@@ -106,6 +107,22 @@
       letter-spacing: 0.14em;
       margin-top: 47px;
       margin-left: 33%;
+    }
+
+    /* Bouton retour sous le titre, hors layout */
+    .back-link {
+      position: absolute;
+      left: 0;
+      top: 17vh;
+      background: none;
+      border: none;
+      padding: 0;
+      font: inherit;
+      color: var(--text);
+      cursor: pointer;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      font-size: 1.3vmin;
     }
 
     .cards-row {
@@ -147,20 +164,21 @@
     }
     
     .footer {
-    font-size: 1.7vmin;
-    line-height: 1.6;
-    position: fixed;
-    bottom: 10px;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 1001;
-    color: var(--text); /* Uses the text color variable */
-    padding: 0.5vmin 2vmin;
-    text-align: center;
-    letter-spacing: 0.1em;
-    mix-blend-mode: difference; /* This inverts based on background */
-    filter: invert(1);
-  }
+      font-size: 1.7vmin;
+      line-height: 1.6;
+      position: fixed;
+      bottom: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 1001;
+      color: var(--text);
+      padding: 0.5vmin 2vmin;
+      text-align: center;
+      letter-spacing: 0.1em;
+      mix-blend-mode: difference;
+      filter: invert(1);
+    }
+
     /* Lightbox */
     .lightbox {
       display: none;
@@ -268,13 +286,6 @@
     .card.clickable:hover {
       opacity: 0.8;
     }
-
-    .card.back-button {
-      aspect-ratio: auto;
-      height: auto;
-      min-height: auto;
-    }
-
   </style>
 </head>
 <body>
@@ -386,6 +397,9 @@
       <section class="title-row">
         <h1 class="main-title">Lumière</h1>
         <p class="type-label">Collection Printemps</p>
+        <button class="back-link" onclick="showPage('collection')">
+          ← Retour aux collections
+        </button>
       </section>
 
       <section class="cards-row">
@@ -418,14 +432,6 @@
             <div class="card-info-right"><p>180€</p></div>
           </div>
         </article>
-
-        <article class="card clickable back-button" onclick="showPage('collection')">
-          <div class="card-info">
-            <div class="card-info-left">
-              <p>← Retour aux collections</p>
-            </div>
-          </div>
-        </article>
       </section>
     </section>
 
@@ -434,6 +440,9 @@
       <section class="title-row">
         <h1 class="main-title">Ombre</h1>
         <p class="type-label">Collection Hiver</p>
+        <button class="back-link" onclick="showPage('collection')">
+          ← Retour aux collections
+        </button>
       </section>
 
       <section class="cards-row">
@@ -466,14 +475,6 @@
             <div class="card-info-right"><p>145€</p></div>
           </div>
         </article>
-
-        <article class="card clickable" onclick="showPage('collection')">
-          <div class="card-info">
-            <div class="card-info-left">
-              <p>← Retour aux collections</p>
-            </div>
-          </div>
-        </article>
       </section>
     </section>
 
@@ -482,6 +483,9 @@
       <section class="title-row">
         <h1 class="main-title">Terre</h1>
         <p class="type-label">Collection Automne</p>
+        <button class="back-link" onclick="showPage('collection')">
+          ← Retour aux collections
+        </button>
       </section>
 
       <section class="cards-row">
@@ -512,14 +516,6 @@
               <p>Bracelet Écorce</p><p>Cuivre, cuir</p><p>Ajustable</p>
             </div>
             <div class="card-info-right"><p>135€</p></div>
-          </div>
-        </article>
-
-        <article class="card clickable" onclick="showPage('collection')">
-          <div class="card-info">
-            <div class="card-info-left">
-              <p>← Retour aux collections</p>
-            </div>
           </div>
         </article>
       </section>
@@ -571,6 +567,9 @@
       <section class="title-row">
         <h1 class="main-title">Bagues</h1>
         <p class="type-label">Catégorie</p>
+        <button class="back-link" onclick="showPage('categories')">
+          ← Retour aux catégories
+        </button>
       </section>
 
       <section class="cards-row">
@@ -603,14 +602,6 @@
             <div class="card-info-right"><p>165€</p></div>
           </div>
         </article>
-
-        <article class="card clickable back-button" onclick="showPage('categories')">
-          <div class="card-info">
-            <div class="card-info-left">
-              <p>← Retour aux catégories</p>
-            </div>
-          </div>
-        </article>
       </section>
     </section>
 
@@ -619,6 +610,9 @@
       <section class="title-row">
         <h1 class="main-title">Colliers</h1>
         <p class="type-label">Catégorie</p>
+        <button class="back-link" onclick="showPage('categories')">
+          ← Retour aux catégories
+        </button>
       </section>
 
       <section class="cards-row">
@@ -651,14 +645,6 @@
             <div class="card-info-right"><p>220€</p></div>
           </div>
         </article>
-
-        <article class="card clickable back-button" onclick="showPage('categories')">
-          <div class="card-info">
-            <div class="card-info-left">
-              <p>← Retour aux catégories</p>
-            </div>
-          </div>
-        </article>
       </section>
     </section>
 
@@ -667,6 +653,9 @@
       <section class="title-row">
         <h1 class="main-title">Bracelets</h1>
         <p class="type-label">Catégorie</p>
+        <button class="back-link" onclick="showPage('categories')">
+          ← Retour aux catégories
+        </button>
       </section>
 
       <section class="cards-row">
@@ -699,14 +688,6 @@
             <div class="card-info-right"><p>210€</p></div>
           </div>
         </article>
-
-        <article class="card clickable back-button" onclick="showPage('categories')">
-          <div class="card-info">
-            <div class="card-info-left">
-              <p>← Retour aux catégories</p>
-            </div>
-          </div>
-        </article>
       </section>
     </section>
 
@@ -716,7 +697,7 @@
         <h1 class="main-title">Commander</h1>
         <p class="type-label">Après validation</p>
       </section>
-     TALLY FORM
+      TALLY FORM
     </section>
 
     <!-- PAGE CONTACT -->
@@ -793,12 +774,24 @@
 
   const buttons = document.querySelectorAll('[data-page-btn]');
 
+  function getTopButtonNameFromPage(pageName) {
+    if (pageName.startsWith('collection-')) return 'collection';
+    if (pageName.startsWith('category-')) return 'categories';
+    return pageName;
+  }
+
   function showPage(name) {
     Object.values(pages).forEach(p => p.classList.remove('active'));
     (pages[name] || pages.menu).classList.add('active');
 
+    const topName = getTopButtonNameFromPage(name);
+
     buttons.forEach(b => {
-      b.dataset.pageActive = (b.dataset.pageBtn === name) ? 'true' : 'false';
+      if (b.dataset.pageBtn === 'menu') {
+        b.dataset.pageActive = 'true';
+      } else {
+        b.dataset.pageActive = (b.dataset.pageBtn === topName) ? 'true' : 'false';
+      }
     });
   }
 
@@ -808,6 +801,7 @@
 
   const hash = window.location.hash.replace('#', '');
   if (hash && pages[hash]) showPage(hash);
+  else showPage('menu');
 
   function openLightbox(title, collection, materials, price, description) {
     const lightbox = document.getElementById('lightbox');
@@ -830,7 +824,6 @@
     document.getElementById('lightbox').classList.remove('active');
   }
 
-  // Close lightbox on background click
   document.getElementById('lightbox').addEventListener('click', function(e) {
     if (e.target === this) closeLightbox();
   });
