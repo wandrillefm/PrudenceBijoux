@@ -170,6 +170,17 @@
       margin-top: 0.1vmin;
     }
 
+    @media (max-width: 768px) {
+  .cards-row {
+    grid-template-columns: 1fr;
+    margin-top: 0; /* optionnel, pour éviter le -40px sur mobile */
+  }
+
+  .card {
+    aspect-ratio: auto; /* évite les cartes trop hautes sur mobile */
+  }
+}
+
     .desc {
       font-size: 1.7vmin;
       line-height: 1.6;
