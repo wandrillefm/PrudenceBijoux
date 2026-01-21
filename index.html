@@ -86,17 +86,17 @@
 
     .title-row {
       display: flex;
-      align-items: flex-start;
-      justify-content: space-between;
+      align-items: flex-end;
+      justify-content: flex-start;
       margin-bottom: 12%;
-      position: relative; /* pour positionner le bouton retour */
+      position: relative;
     }
 
     .main-title {
       font-family: "Gravitas One", system-ui, serif;
       font-size: 10vmin;
       line-height: 0.9;
-      font-variation-settings: "wdth" 150;
+      text-align: left;
     }
 
     .type-label {
@@ -105,24 +105,30 @@
       font-size: 1.5vmin;
       font-weight: 500;
       letter-spacing: 0.14em;
-      margin-top: 47px;
-      margin-left: 33%;
+      text-align: right;
+      margin-left: auto;
     }
 
-    /* Bouton retour sous le titre, hors layout */
     .back-link {
-      position: absolute;
-      left: 0;
-      top: 17vh;
       background: none;
       border: none;
       padding: 0;
       font: inherit;
       color: var(--text);
       cursor: pointer;
-      text-transform: uppercase;
-      letter-spacing: 0.14em;
-      font-size: 1.3vmin;
+      text-transform: none;
+      letter-spacing: 0;
+      font-size: 3vmin;
+      line-height: 1;
+      display: flex;
+      align-items: left;
+      justify-content: center;
+      width: 3vmin;
+      flex-shrink: 0;
+      margin-right: 20px;
+
+  position: relative;
+  top: -20px; /* monte l’élément de 40px */
     }
 
     .cards-row {
@@ -395,11 +401,11 @@
     <!-- SUBPAGE: Collection Lumière -->
     <section class="page" id="page-collection-lumiere">
       <section class="title-row">
+        <button class="back-link" onclick="showPage('collection')" aria-label="Retour aux collections">
+         ←
+        </button>
         <h1 class="main-title">Lumière</h1>
         <p class="type-label">Collection Printemps</p>
-        <button class="back-link" onclick="showPage('collection')">
-          ← Retour aux collections
-        </button>
       </section>
 
       <section class="cards-row">
@@ -438,11 +444,11 @@
     <!-- SUBPAGE: Collection Ombre -->
     <section class="page" id="page-collection-ombre">
       <section class="title-row">
+        <button class="back-link" onclick="showPage('collection')" aria-label="Retour aux collections">
+          ←
+        </button>
         <h1 class="main-title">Ombre</h1>
         <p class="type-label">Collection Hiver</p>
-        <button class="back-link" onclick="showPage('collection')">
-          ← Retour aux collections
-        </button>
       </section>
 
       <section class="cards-row">
@@ -481,11 +487,11 @@
     <!-- SUBPAGE: Collection Terre -->
     <section class="page" id="page-collection-terre">
       <section class="title-row">
+        <button class="back-link" onclick="showPage('collection')" aria-label="Retour aux collections">
+          ←
+        </button>
         <h1 class="main-title">Terre</h1>
         <p class="type-label">Collection Automne</p>
-        <button class="back-link" onclick="showPage('collection')">
-          ← Retour aux collections
-        </button>
       </section>
 
       <section class="cards-row">
@@ -565,11 +571,11 @@
     <!-- SUBPAGE: Catégorie Bagues -->
     <section class="page" id="page-category-bagues">
       <section class="title-row">
+        <button class="back-link" onclick="showPage('categories')" aria-label="Retour aux catégories">
+          ←
+        </button>
         <h1 class="main-title">Bagues</h1>
         <p class="type-label">Catégorie</p>
-        <button class="back-link" onclick="showPage('categories')">
-          ← Retour aux catégories
-        </button>
       </section>
 
       <section class="cards-row">
@@ -608,11 +614,11 @@
     <!-- SUBPAGE: Catégorie Colliers -->
     <section class="page" id="page-category-colliers">
       <section class="title-row">
+        <button class="back-link" onclick="showPage('categories')" aria-label="Retour aux catégories">
+          ←
+        </button>
         <h1 class="main-title">Colliers</h1>
         <p class="type-label">Catégorie</p>
-        <button class="back-link" onclick="showPage('categories')">
-          ← Retour aux catégories
-        </button>
       </section>
 
       <section class="cards-row">
@@ -651,11 +657,11 @@
     <!-- SUBPAGE: Catégorie Bracelets -->
     <section class="page" id="page-category-bracelets">
       <section class="title-row">
+        <button class="back-link" onclick="showPage('categories')" aria-label="Retour aux catégories">
+          ←
+        </button>
         <h1 class="main-title">Bracelets</h1>
         <p class="type-label">Catégorie</p>
-        <button class="back-link" onclick="showPage('categories')">
-          ← Retour aux catégories
-        </button>
       </section>
 
       <section class="cards-row">
@@ -697,7 +703,9 @@
         <h1 class="main-title">Commander</h1>
         <p class="type-label">Après validation</p>
       </section>
-      TALLY FORM
+      <iframe data-tally-src="https://tally.so/embed/xXJVqo?hideTitle=1&transparentBackground=1&dynamicHeight=1" loading="lazy" width="100%" height="313" frameborder="0" marginheight="0" marginwidth="0" title="Contactez moi!
+"></iframe>
+<script>var d=document,w="https://tally.so/widgets/embed.js",v=function(){"undefined"!=typeof Tally?Tally.loadEmbeds():d.querySelectorAll("iframe[data-tally-src]:not([src])").forEach((function(e){e.src=e.dataset.tallySrc}))};if("undefined"!=typeof Tally)v();else if(d.querySelector('script[src="'+w+'"]')==null){var s=d.createElement("script");s.src=w,s.onload=v,s.onerror=v,d.body.appendChild(s);}</script>
     </section>
 
     <!-- PAGE CONTACT -->
@@ -787,12 +795,10 @@
     const topName = getTopButtonNameFromPage(name);
 
     buttons.forEach(b => {
-      if (b.dataset.pageBtn === 'menu') {
-        b.dataset.pageActive = 'true';
-      } else {
-        b.dataset.pageActive = (b.dataset.pageBtn === topName) ? 'true' : 'false';
-      }
-    });
+  const isTop = (b.dataset.pageBtn === topName);
+  b.dataset.pageActive = isTop ? 'true' : 'false';
+});
+
   }
 
   buttons.forEach(btn => {
