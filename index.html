@@ -126,9 +126,8 @@
       width: 3vmin;
       flex-shrink: 0;
       margin-right: 20px;
-
-  position: relative;
-  top: -20px; /* monte l’élément de 40px */
+      position: relative;
+      top: -20px;
     }
 
     .cards-row {
@@ -258,14 +257,17 @@
       flex-direction: column;
       justify-content: space-between;
       padding-right: 2vmin;
+      font-size: 1.7vmin;
+      line-height: 1.6;
     }
 
     .lightbox-info-top {
       margin-top: 0;
+      margin-bottom: 1.5vmin;
     }
 
     .lightbox-description {
-      margin-bottom: 0;
+      margin-top: 1.5vmin;
       font-size: 1.7vmin;
     }
 
@@ -292,6 +294,39 @@
     .card.clickable:hover {
       opacity: 0.8;
     }
+
+    /* Cart cards (petit format ratio 5/2) */
+    .card.cart-card {
+      aspect-ratio: 5/2;
+      padding: 0;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+    }
+
+    .card.cart-card .card-info {
+      margin-top: 0;
+      align-items: flex-start;       /* contenu en haut */
+    }
+
+    .card.cart-card .card-info-left p + p {
+      margin-top: 0.2vmin;
+    }
+
+    .card.cart-card .card-info-right {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;         /* bord droit */
+      justify-content: flex-start;   /* en haut */
+      gap: 0.6vmin;
+    }
+
+.card.cart-card .card-info-left {
+  max-width: 100%;
+  overflow-wrap: break-word; /* ou word-wrap: break-word; */
+  word-break: break-word;
+}
+
   </style>
 </head>
 <body>
@@ -303,26 +338,26 @@
     <header class="top-bar">
       <div class="top-left">
         <button class="top-link" data-page-btn="menu" data-page-active="true">
-         [ ACCUEIL ]
+          [ ACCUEIL ]
         </button>
         <button class="top-link" data-page-btn="collection">
-         [ COLLECTIONS ]
+          [ COLLECTIONS ]
         </button>
         <button class="top-link" data-page-btn="categories">
-         [ CATEGORIES ]
+          [ CATEGORIES ]
         </button>
       </div>
       <div class="top-right">
         <button class="top-link" data-page-btn="commande">
-         [ COMMANDER ]
+          [ COMMANDER ]
         </button>
         <button class="top-link" data-page-btn="contact">
-         [ CONTACT ]
+          [ CONTACT ]
         </button>
       </div>
     </header>
 
-    <!-- PAGE ACCUEIL (active par défaut) -->
+    <!-- PAGE ACCUEIL -->
     <section class="page active" id="page-menu">
       <section class="title-row">
         <h1 class="main-title">Accueil</h1>
@@ -334,14 +369,14 @@
           <div class="card-image"></div>
           <div class="desc">
             Prudence Bijoux a été créée pour proposer des bijoux fait mains, pour ceux qui aiment le beau et le manuel. (prstn de la marque)
-(texte blanco) 3 LIGNES
+            (texte blanco) 3 LIGNES
           </div>
         </article>
 
         <article class="card">
           <div class="desc">
             Qui suis-je ? Prudence, tel age, tel etudes, etc (prstn Prudence personelle)
-(texte blanco) 3 LIGNES
+            (texte blanco) 3 LIGNES
           </div>
           <div class="card-image"></div>
         </article>
@@ -358,7 +393,7 @@
       </section>
     </section>
 
-    <!-- PAGE COLLECTIONS (liste des collections) -->
+    <!-- PAGE COLLECTIONS -->
     <section class="page" id="page-collection">
       <section class="title-row">
         <h1 class="main-title">Collections</h1>
@@ -366,35 +401,39 @@
       </section>
 
       <section class="cards-row">
-        <article class="card clickable" onclick="showPage('collection-lumiere')">
-          <div class="card-image"></div>
-          <div class="card-info">
-            <div class="card-info-left">
-              <p>Lumière</p><p>Collection Printemps</p><p>Or et pierres fines</p>
-            </div>
-            <div class="card-info-right"><p>VOIR</p></div>
-          </div>
-        </article>
+<!-- Lumière -->
+<article class="card clickable" onclick="showPage('collection-lumiere')">
+  <div class="card-image"></div>
+  <div class="card-info">
+    <div class="card-info-left">
+      <p>Lumière</p><p>Collection Printemps</p><p>-</p>
+    </div>
+    <div class="card-info-right"><p>VOIR</p></div>
+  </div>
+</article>
 
-        <article class="card clickable" onclick="showPage('collection-ombre')">
-          <div class="card-image"></div>
-          <div class="card-info">
-            <div class="card-info-left">
-              <p>Ombre</p><p>Collection Hiver</p><p>Argent et onyx</p>
-            </div>
-            <div class="card-info-right"><p>VOIR</p></div>
-          </div>
-        </article>
+<!-- Ombre -->
+<article class="card clickable" onclick="showPage('collection-ombre')">
+  <div class="card-image"></div>
+  <div class="card-info">
+    <div class="card-info-left">
+      <p>Ombre</p><p>Collection Hiver</p><p>-</p>
+    </div>
+    <div class="card-info-right"><p>VOIR</p></div>
+  </div>
+</article>
 
-        <article class="card clickable" onclick="showPage('collection-terre')">
-          <div class="card-image"></div>
-          <div class="card-info">
-            <div class="card-info-left">
-              <p>Terre</p><p>Collection Automne</p><p>Cuivre et bois</p>
-            </div>
-            <div class="card-info-right"><p>VOIR</p></div>
-          </div>
-        </article>
+<!-- Terre -->
+<article class="card clickable" onclick="showPage('collection-terre')">
+  <div class="card-image"></div>
+  <div class="card-info">
+    <div class="card-info-left">
+      <p>Terre</p><p>Collection Automne</p><p>-</p>
+    </div>
+    <div class="card-info-right"><p>VOIR</p></div>
+  </div>
+</article>
+
       </section>
     </section>
 
@@ -402,7 +441,7 @@
     <section class="page" id="page-collection-lumiere">
       <section class="title-row">
         <button class="back-link" onclick="showPage('collection')" aria-label="Retour aux collections">
-         ←
+          ←
         </button>
         <h1 class="main-title">Lumière</h1>
         <p class="type-label">Collection Printemps</p>
@@ -539,7 +578,7 @@
           <div class="card-image"></div>
           <div class="card-info">
             <div class="card-info-left">
-              <p>Bagues</p><p>Collections variées</p><p>Or, argent, acier</p>
+              <p>Bagues</p><p>-</p><p>-</p>
             </div>
             <div class="card-info-right"><p>VOIR</p></div>
           </div>
@@ -549,7 +588,7 @@
           <div class="card-image"></div>
           <div class="card-info">
             <div class="card-info-left">
-              <p>Colliers</p><p>Pendentifs & chaînes</p><p>Métaux précieux</p>
+              <p>Colliers</p><p>-</p><p>-</p>
             </div>
             <div class="card-info-right"><p>VOIR</p></div>
           </div>
@@ -559,7 +598,7 @@
           <div class="card-image"></div>
           <div class="card-info">
             <div class="card-info-left">
-              <p>Bracelets</p><p>Cuffs & chaînes</p><p>Mélange de matières</p>
+              <p>Bracelets</p><p>-</p><p>-</p>
             </div>
             <div class="card-info-right"><p>VOIR</p></div>
           </div>
@@ -697,15 +736,25 @@
       </section>
     </section>
 
-    <!-- PAGE COMMANDE -->
+    <!-- PAGE COMMANDE (panier) -->
     <section class="page" id="page-commande">
       <section class="title-row">
         <h1 class="main-title">Commander</h1>
         <p class="type-label">📦</p>
       </section>
-      <iframe data-tally-src="https://tally.so/embed/xXJVqo?hideTitle=1&transparentBackground=1&dynamicHeight=1" loading="lazy" width="100%" height="313" frameborder="0" marginheight="0" marginwidth="0" title="Contactez moi!
-"></iframe>
-<script>var d=document,w="https://tally.so/widgets/embed.js",v=function(){"undefined"!=typeof Tally?Tally.loadEmbeds():d.querySelectorAll("iframe[data-tally-src]:not([src])").forEach((function(e){e.src=e.dataset.tallySrc}))};if("undefined"!=typeof Tally)v();else if(d.querySelector('script[src="'+w+'"]')==null){var s=d.createElement("script");s.src=w,s.onload=v,s.onerror=v,d.body.appendChild(s);}</script>
+
+      <section class="cards-row" id="order-cart">
+        <!-- Contenu généré en JS -->
+      </section>
+
+      <div id="order-summary" style="margin-top:2vmin; font-size:1.7vmin;"></div>
+
+      <div style="margin-top:3vmin;">
+        <button id="send-order"
+                style="padding:0.8vmin 2.5vmin; border:1px solid var(--text); background:transparent; cursor:pointer; font-size:1.7vmin;">
+          Envoyer la commande
+        </button>
+      </div>
     </section>
 
     <!-- PAGE CONTACT -->
@@ -760,6 +809,26 @@
         <h2 class="lightbox-title" id="lightbox-title"></h2>
         <div class="lightbox-details" id="lightbox-details"></div>
       </div>
+
+      <!-- Personnalisation -->
+      <div class="lightbox-personalization">
+        <label for="lightbox-custom" style="display:block; margin-bottom:0.5vmin; font-size:1.7vmin;">
+          Personnaliser (taille, gravure, demande particulière…) :
+        </label>
+        <textarea id="lightbox-custom"
+                  rows="9"
+                  style="width:100%; font-size:1.6vmin; padding:0.5vmin; resize:none;"></textarea>
+      </div>
+
+      <!-- Bouton ajouter au panier / mettre à jour -->
+      <div style="margin-top:2vmin; display:flex; gap:1vmin; align-items:center;">
+        <button id="lightbox-add"
+                style="padding:0.6vmin 2vmin; border:1px solid var(--text); background:transparent; cursor:pointer; font-size:1.7vmin;">
+          Ajouter au panier
+        </button>
+        <span id="lightbox-status" style="font-size:1.6vmin;"></span>
+      </div>
+
       <div class="lightbox-description" id="lightbox-description"></div>
     </div>
   </div>
@@ -788,6 +857,122 @@
     return pageName;
   }
 
+  // Panier avec localStorage
+  function getCart() {
+    const raw = localStorage.getItem('cart');
+    if (!raw) return [];
+    try {
+      return JSON.parse(raw) || [];
+    } catch {
+      return [];
+    }
+  }
+
+  function saveCart(cart) {
+    localStorage.setItem('cart', JSON.stringify(cart));
+  }
+
+  function addToCart(product) {
+    const cart = getCart();
+    const existing = cart.find(p => p.id === product.id);
+    if (existing) {
+      existing.quantity = (existing.quantity || 1) + (product.quantity || 1);
+      if (product.personalization) {
+        existing.personalization = product.personalization;
+      }
+    } else {
+      cart.push(product);
+    }
+    saveCart(cart);
+  }
+
+  function renderCartOnOrderPage() {
+    const container = document.getElementById('order-cart');
+    const summaryEl = document.getElementById('order-summary');
+    if (!container) return;
+
+    const cart = getCart();
+
+    container.innerHTML = '';
+
+    if (cart.length === 0) {
+      container.innerHTML = '<p style="font-size:1.7vmin;">Votre panier est vide.</p>';
+      summaryEl.textContent = '';
+      return;
+    }
+
+    cart.forEach((item, index) => {
+      const article = document.createElement('article');
+      article.className = 'card cart-card';
+      article.dataset.index = index;
+
+      article.innerHTML = `
+        <div class="card-info">
+          <div class="card-info-left">
+            <p><strong>${item.id}</strong></p>
+            <p>${item.collection}</p>
+            <p>${item.materials}</p>
+            <p>${item.price}</p>
+            ${item.personalization ? `<p><em>Perso : ${item.personalization}</em></p>` : ''}
+          </div>
+          <div class="card-info-right" data-controls-index="${index}">
+            <div style="display:flex; align-items:center; gap:0.5vmin;">
+              <button data-action="minus" data-index="${index}" style="padding:0 0.8vmin;">−</button>
+              <span>${item.quantity || 1}</span>
+              <button data-action="plus" data-index="${index}" style="padding:0 0.8vmin;">+</button>
+            </div>
+          </div>
+        </div>
+      `;
+
+      container.appendChild(article);
+    });
+
+    const total = cart.reduce((sum, item) => {
+      const num = parseFloat((item.price || '').replace(/[^\d.,]/g, '').replace(',', '.')) || 0;
+      return sum + num * (item.quantity || 1);
+    }, 0);
+
+    summaryEl.textContent = `Total estimé : ${total.toFixed(2)} €`;
+
+    // Event delegation : +/- et clic carte
+    container.onclick = function (e) {
+      const btn = e.target.closest('button[data-action]');
+      if (btn) {
+        const action = btn.dataset.action;
+        const idx = parseInt(btn.dataset.index, 10);
+        const cart = getCart();
+        const item = cart[idx];
+        if (!item) return;
+
+        if (action === 'plus') {
+          item.quantity = (item.quantity || 1) + 1;
+        } else if (action === 'minus') {
+          const newQty = (item.quantity || 1) - 1;
+          if (newQty <= 0) {
+            const confirmDelete = confirm('Supprimer du panier ?');
+            if (confirmDelete) {
+              cart.splice(idx, 1);
+            }
+          } else {
+            item.quantity = newQty;
+          }
+        }
+
+        saveCart(cart);
+        renderCartOnOrderPage();
+        return;
+      }
+
+      // clic sur la carte (hors boutons) => ouvrir lightbox spéciale commande
+      const card = e.target.closest('.card.cart-card');
+      if (card) {
+        const idx = parseInt(card.dataset.index, 10);
+        openLightboxFromCart(idx);
+      }
+    };
+  }
+
   function showPage(name) {
     Object.values(pages).forEach(p => p.classList.remove('active'));
     (pages[name] || pages.menu).classList.add('active');
@@ -795,10 +980,13 @@
     const topName = getTopButtonNameFromPage(name);
 
     buttons.forEach(b => {
-  const isTop = (b.dataset.pageBtn === topName);
-  b.dataset.pageActive = isTop ? 'true' : 'false';
-});
+      const isTop = (b.dataset.pageBtn === topName);
+      b.dataset.pageActive = isTop ? 'true' : 'false';
+    });
 
+    if (name === 'commande') {
+      renderCartOnOrderPage();
+    }
   }
 
   buttons.forEach(btn => {
@@ -809,21 +997,92 @@
   if (hash && pages[hash]) showPage(hash);
   else showPage('menu');
 
-  function openLightbox(title, collection, materials, price, description) {
+  let currentProduct = null;
+  let currentCartIndex = null; // index si on vient du panier
+
+  // Lightbox générique, mais avec mode "catalogue" ou "commande"
+  function openLightbox(title, collection, materials, price, description, options = {}) {
+    const { personalizationFromCart = '', mode = 'catalogue' } = options;
+
     const lightbox = document.getElementById('lightbox');
     const titleEl = document.getElementById('lightbox-title');
     const detailsEl = document.getElementById('lightbox-details');
     const descriptionEl = document.getElementById('lightbox-description');
+    const customEl = document.getElementById('lightbox-custom');
+    const addBtn = document.getElementById('lightbox-add');
+    const statusEl = document.getElementById('lightbox-status');
+
+    // pré-remplir perso si on vient du panier
+    customEl.value = personalizationFromCart || '';
+    statusEl.textContent = '';
+    addBtn.textContent = mode === 'commande' ? 'Mettre à jour' : 'Ajouter au panier';
 
     titleEl.textContent = title;
     detailsEl.innerHTML = `
       <p><strong>Collection:</strong> ${collection}</p>
       <p><strong>Matériaux:</strong> ${materials}</p>
-      <p><strong>Prix:</strong> ${price}</p>
+      ${price ? `<p><strong>Prix:</strong> ${price}</p>` : ''}
     `;
-    descriptionEl.innerHTML = `<p>${description}</p>`;
+    // pas de « Personnalisation : ... » en bas
+    descriptionEl.innerHTML = description ? `<p>${description}</p>` : '';
+
+    currentProduct = { title, collection, materials, price };
+
+    const newAddBtn = addBtn.cloneNode(true);
+    addBtn.parentNode.replaceChild(newAddBtn, addBtn);
+
+    newAddBtn.addEventListener('click', function () {
+      if (!currentProduct) return;
+
+      const personalization = customEl.value.trim();
+      const cart = getCart();
+
+      if (mode === 'commande' && currentCartIndex !== null) {
+        // mode spécial commande : on met à jour l’item existant
+        const item = cart[currentCartIndex];
+        if (item) {
+          item.personalization = personalization;
+          saveCart(cart);
+          renderCartOnOrderPage();
+        }
+        newAddBtn.textContent = 'Mis à jour';
+      } else {
+        // mode catalogue : ajout au panier
+        addToCart({
+          id: currentProduct.title,
+          collection: currentProduct.collection,
+          materials: currentProduct.materials,
+          price: currentProduct.price,
+          quantity: 1,
+          personalization
+        });
+        newAddBtn.textContent = 'Ajouté au panier';
+      }
+
+      statusEl.textContent = '';
+    });
 
     lightbox.classList.add('active');
+  }
+
+  // ouverture depuis le panier (lightbox spéciale commande)
+  function openLightboxFromCart(index) {
+    const cart = getCart();
+    const item = cart[index];
+    if (!item) return;
+
+    currentCartIndex = index;
+    openLightbox(
+      item.id,
+      item.collection,
+      item.materials,
+      item.price,
+      '',
+      {
+        personalizationFromCart: item.personalization || '',
+        mode: 'commande'
+      }
+    );
   }
 
   function closeLightbox() {
@@ -833,6 +1092,42 @@
   document.getElementById('lightbox').addEventListener('click', function(e) {
     if (e.target === this) closeLightbox();
   });
+
+  function buildOrderEmailBody() {
+    const cart = getCart();
+    if (cart.length === 0) {
+      return 'Panier vide.';
+    }
+
+    let body = 'Bonjour,%0D%0A%0D%0AJe souhaite passer la commande suivante :%0D%0A%0D%0A';
+
+    cart.forEach(item => {
+      body += `- ${item.quantity || 1} x ${item.id} (${item.collection}, ${item.materials}, ${item.price})%0D%0A`;
+      if (item.personalization) {
+        body += `  Personnalisation : ${item.personalization}%0D%0A`;
+      }
+    });
+
+    body += '%0D%0AMerci,%0D%0A';
+
+    return body;
+  }
+
+  const sendOrderBtn = document.getElementById('send-order');
+  if (sendOrderBtn) {
+    sendOrderBtn.addEventListener('click', () => {
+      const cart = getCart();
+      if (cart.length === 0) {
+        alert('Votre panier est vide.');
+        return;
+      }
+
+      const subject = encodeURIComponent('Nouvelle commande Prudence Bijoux');
+      const body = buildOrderEmailBody();
+      const mailto = `mailto:prudelaruelle@yahoo.com?subject=${subject}&body=${body}`;
+      window.location.href = mailto;
+    });
+  }
 </script>
 
 </body>
