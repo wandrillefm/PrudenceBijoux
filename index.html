@@ -327,6 +327,60 @@
   word-break: break-word;
 }
 
+/* MOBILE : mise en colonne + cards accueil 2:1 */
+@media (max-width: 768px) {
+  /* Lightbox : image au-dessus, contenu empilé */
+  .lightbox-content {
+    flex-direction: column;
+    height: auto;
+    max-height: 80vh;
+    overflow-y: auto;
+  }
+
+  .lightbox-image {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1 / 1; /* image carrée en haut */
+  }
+
+  .lightbox-text {
+    width: 100%;
+    padding-right: 0;
+  }
+
+  /* Accueil : une card par ligne, format 2:1, image 1:1 en haut, texte en bas */
+  #page-menu .cards-row {
+    grid-template-columns: 1fr;
+    margin-top: 0;       /* on garde tes paddings latéraux de .artboard-inner */
+    padding-bottom: 135px;
+  }
+
+  #page-menu .card {
+    padding: 1% 10% 0px 10%;
+    aspect-ratio: 3 / 2;
+    justify-content: flex-start;
+  }
+
+  #page-menu .card-image {
+    width: 100%;
+    aspect-ratio: 5 / 4;          /* carré */
+  }
+
+  #page-menu .desc,
+  #page-menu .card-info {
+    flex: 1;
+    font-size: 2.7vmin;
+    display: block;
+  }
+
+  .footer {
+    font-size: 2.1vmin;
+  }
+
+}
+
+
+
   </style>
 </head>
 <body>
@@ -374,11 +428,11 @@
         </article>
 
         <article class="card">
+          <div class="card-image"></div>
           <div class="desc">
             Qui suis-je ? Prudence, tel age, tel etudes, etc (prstn Prudence personelle)
             (texte blanco) 3 LIGNES
           </div>
-          <div class="card-image"></div>
         </article>
 
         <article class="card">
@@ -740,7 +794,6 @@
     <section class="page" id="page-commande">
       <section class="title-row">
         <h1 class="main-title">Commander</h1>
-        <p class="type-label">📦</p>
       </section>
 
       <section class="cards-row" id="order-cart">
