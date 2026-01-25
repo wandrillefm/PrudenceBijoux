@@ -379,8 +379,6 @@
 
 }
 
-
-
   </style>
 </head>
 <body>
@@ -393,9 +391,6 @@
       <div class="top-left">
         <button class="top-link" data-page-btn="menu" data-page-active="true">
           [ ACCUEIL ]
-        </button>
-        <button class="top-link" data-page-btn="collection">
-          [ COLLECTIONS ]
         </button>
         <button class="top-link" data-page-btn="categories">
           [ CATEGORIES ]
@@ -442,179 +437,6 @@
               <p>Prudence Bijoux</p><p>Marque de bijoux</p><p>Créée en 2025</p>
             </div>
             <div class="card-info-right"><p>FR</p></div>
-          </div>
-        </article>
-      </section>
-    </section>
-
-    <!-- PAGE COLLECTIONS -->
-    <section class="page" id="page-collection">
-      <section class="title-row">
-        <h1 class="main-title">Collections</h1>
-        <p class="type-label">Type: Bijoux</p>
-      </section>
-
-      <section class="cards-row">
-<!-- Lumière -->
-<article class="card clickable" onclick="showPage('collection-lumiere')">
-  <div class="card-image"></div>
-  <div class="card-info">
-    <div class="card-info-left">
-      <p>Lumière</p><p>Collection Printemps</p><p>-</p>
-    </div>
-    <div class="card-info-right"><p>VOIR</p></div>
-  </div>
-</article>
-
-<!-- Ombre -->
-<article class="card clickable" onclick="showPage('collection-ombre')">
-  <div class="card-image"></div>
-  <div class="card-info">
-    <div class="card-info-left">
-      <p>Ombre</p><p>Collection Hiver</p><p>-</p>
-    </div>
-    <div class="card-info-right"><p>VOIR</p></div>
-  </div>
-</article>
-
-<!-- Terre -->
-<article class="card clickable" onclick="showPage('collection-terre')">
-  <div class="card-image"></div>
-  <div class="card-info">
-    <div class="card-info-left">
-      <p>Terre</p><p>Collection Automne</p><p>-</p>
-    </div>
-    <div class="card-info-right"><p>VOIR</p></div>
-  </div>
-</article>
-
-      </section>
-    </section>
-
-    <!-- SUBPAGE: Collection Lumière -->
-    <section class="page" id="page-collection-lumiere">
-      <section class="title-row">
-        <button class="back-link" onclick="showPage('collection')" aria-label="Retour aux collections">
-          ←
-        </button>
-        <h1 class="main-title">Lumière</h1>
-        <p class="type-label">Collection Printemps</p>
-      </section>
-
-      <section class="cards-row">
-        <article class="card clickable" onclick="openLightbox('Bague Soleil', 'Collection Lumière', 'Or 18k, citrine', '250€', 'Bague dorée ornée d\'une citrine taillée en poire. Pièce délicate inspirée par les premiers rayons du printemps.')">
-          <div class="card-image"></div>
-          <div class="card-info">
-            <div class="card-info-left">
-              <p>Bague Soleil</p><p>Or 18k, citrine</p><p>Taille ajustable</p>
-            </div>
-            <div class="card-info-right"><p>250€</p></div>
-          </div>
-        </article>
-
-        <article class="card clickable" onclick="openLightbox('Collier Aube', 'Collection Lumière', 'Or 14k, perles d\'eau douce', '320€', 'Collier fin avec pendentif en forme de goutte, orné de petites perles d\'eau douce. Chaîne réglable.')">
-          <div class="card-image"></div>
-          <div class="card-info">
-            <div class="card-info-left">
-              <p>Collier Aube</p><p>Or 14k, perles</p><p>Chaîne 45cm</p>
-            </div>
-            <div class="card-info-right"><p>320€</p></div>
-          </div>
-        </article>
-
-        <article class="card clickable" onclick="openLightbox('Bracelet Éclat', 'Collection Lumière', 'Or jaune, quartz rose', '180€', 'Bracelet fin avec trois petites pierres de quartz rose. Fermoir discret et élégant.')">
-          <div class="card-image"></div>
-          <div class="card-info">
-            <div class="card-info-left">
-              <p>Bracelet Éclat</p><p>Or jaune, quartz rose</p><p>Longueur 18cm</p>
-            </div>
-            <div class="card-info-right"><p>180€</p></div>
-          </div>
-        </article>
-      </section>
-    </section>
-
-    <!-- SUBPAGE: Collection Ombre -->
-    <section class="page" id="page-collection-ombre">
-      <section class="title-row">
-        <button class="back-link" onclick="showPage('collection')" aria-label="Retour aux collections">
-          ←
-        </button>
-        <h1 class="main-title">Ombre</h1>
-        <p class="type-label">Collection Hiver</p>
-      </section>
-
-      <section class="cards-row">
-        <article class="card clickable" onclick="openLightbox('Bague Nuit', 'Collection Ombre', 'Argent 925, onyx noir', '195€', 'Bague en argent massif sertie d\'un onyx noir mat. Design minimaliste et intemporel.')">
-          <div class="card-image"></div>
-          <div class="card-info">
-            <div class="card-info-left">
-              <p>Bague Nuit</p><p>Argent 925, onyx</p><p>Taille 54</p>
-            </div>
-            <div class="card-info-right"><p>195€</p></div>
-          </div>
-        </article>
-
-        <article class="card clickable" onclick="openLightbox('Collier Lune', 'Collection Ombre', 'Argent oxydé, pierre de lune', '280€', 'Pendentif en forme de croissant avec pierre de lune iridescente. Chaîne argentée texturée.')">
-          <div class="card-image"></div>
-          <div class="card-info">
-            <div class="card-info-left">
-              <p>Collier Lune</p><p>Argent, pierre de lune</p><p>Chaîne 50cm</p>
-            </div>
-            <div class="card-info-right"><p>280€</p></div>
-          </div>
-        </article>
-
-        <article class="card clickable" onclick="openLightbox('Boucles Étoile', 'Collection Ombre', 'Argent 925, zircons noirs', '145€', 'Puces d\'oreilles en forme d\'étoile avec micro-pavage de zircons noirs. Discrets et raffinés.')">
-          <div class="card-image"></div>
-          <div class="card-info">
-            <div class="card-info-left">
-              <p>Boucles Étoile</p><p>Argent, zircons noirs</p><p>Puces 8mm</p>
-            </div>
-            <div class="card-info-right"><p>145€</p></div>
-          </div>
-        </article>
-      </section>
-    </section>
-
-    <!-- SUBPAGE: Collection Terre -->
-    <section class="page" id="page-collection-terre">
-      <section class="title-row">
-        <button class="back-link" onclick="showPage('collection')" aria-label="Retour aux collections">
-          ←
-        </button>
-        <h1 class="main-title">Terre</h1>
-        <p class="type-label">Collection Automne</p>
-      </section>
-
-      <section class="cards-row">
-        <article class="card clickable" onclick="openLightbox('Bague Forêt', 'Collection Terre', 'Cuivre martelé, bois d\'olivier', '165€', 'Bague en cuivre martelé à la main avec incrustation de bois d\'olivier. Chaque pièce est unique.')">
-          <div class="card-image"></div>
-          <div class="card-info">
-            <div class="card-info-left">
-              <p>Bague Forêt</p><p>Cuivre, bois d'olivier</p><p>Taille 56</p>
-            </div>
-            <div class="card-info-right"><p>165€</p></div>
-          </div>
-        </article>
-
-        <article class="card clickable" onclick="openLightbox('Collier Racine', 'Collection Terre', 'Bronze, jaspe rouge', '220€', 'Pendentif organique en bronze avec jaspe rouge brut. Chaîne en laiton vieilli.')">
-          <div class="card-image"></div>
-          <div class="card-info">
-            <div class="card-info-left">
-              <p>Collier Racine</p><p>Bronze, jaspe rouge</p><p>Chaîne 55cm</p>
-            </div>
-            <div class="card-info-right"><p>220€</p></div>
-          </div>
-        </article>
-
-        <article class="card clickable" onclick="openLightbox('Bracelet Écorce', 'Collection Terre', 'Cuivre texturé, cordon cuir', '135€', 'Bracelet manchette en cuivre avec texture d\'écorce. Cordon en cuir naturel ajustable.')">
-          <div class="card-image"></div>
-          <div class="card-info">
-            <div class="card-info-left">
-              <p>Bracelet Écorce</p><p>Cuivre, cuir</p><p>Ajustable</p>
-            </div>
-            <div class="card-info-right"><p>135€</p></div>
           </div>
         </article>
       </section>
