@@ -320,7 +320,11 @@
     /* MOBILE : tout regroupé ici */
     @media (max-width: 768px) {
       .top-link  {
-        font-size: 1.9vmin;
+        font-size: 2.1vmin;
+      }
+
+      .top-bar  {
+        padding-top: 5%;
       }
 
       .lightbox-content {
@@ -673,11 +677,11 @@
         <!-- Contenu généré en JS -->
       </section>
 
-      <div id="order-summary" style="margin-top:2vmin; font-size:1.7vmin;"></div>
+      <div id="order-summary" style="margin-top:2vmin; font-size:2.1vmin;"></div>
 
       <div style="margin-top:3vmin;">
         <button id="send-order"
-                style="padding:0.8vmin 2.5vmin; border:1px solid var(--text); background:transparent; cursor:pointer; font-size:1.7vmin;">
+                style="padding:0.8vmin 2.5vmin; border:1px solid var(--text); background:transparent; cursor:pointer; font-size:2.1vmin;">
           Envoyer la commande
         </button>
       </div>
@@ -742,7 +746,7 @@
                   rows="5"
                   maxlength="50"
                   style="width:100%; font-size:2.1vmin; padding:0.5vmin; resize:none;"></textarea>
-        <small style="font-size:1.9vmin;">(50 caractères maximum)</small>
+        <small style="font-size:2.1vmin;">(50 caractères maximum)</small>
       </div>
 
       <!-- Bouton ajouter au panier / mettre à jour -->
@@ -751,7 +755,7 @@
                 style="padding:0.6vmin 2vmin; border:1px solid var(--text); background:transparent; cursor:pointer; font-size:2.1vmin;">
           Ajouter au panier
         </button>
-        <span id="lightbox-status" style="font-size:1.9vmin;"></span>
+        <span id="lightbox-status" style="font-size:2.1vmin;"></span>
       </div>
 
       <div class="lightbox-description" id="lightbox-description"></div>
@@ -817,7 +821,7 @@
     container.innerHTML = '';
 
     if (cart.length === 0) {
-      container.innerHTML = '<p style="font-size:1.7vmin;">Votre panier est vide.</p>';
+      container.innerHTML = '<p style="font-size:2.1vmin;">Votre panier est vide.</p>';
       summaryEl.textContent = '';
       return;
     }
