@@ -524,21 +524,21 @@
 
       <section class="cards-row">
         <article class="card clickable" onclick="showPage('categories')">
-          <div class="card-image"></div>
+          <div class="card-image"><img src="" alt="prudence-bijoux"></div>
           <div class="desc">
             Découvrir les catégories de bijoux : bagues, colliers et bracelets, pour explorer toutes les créations disponibles.
           </div>
         </article>
 
         <article class="card clickable" onclick="showPage('presentation')">
-          <div class="card-image"></div>
+          <div class="card-image"><img src="" alt="prudence-bijoux"></div>
           <div class="desc">
             En savoir plus sur Prudence, son parcours, ses inspirations et la manière dont chaque bijou est imaginé et fabriqué.
           </div>
         </article>
 
         <article class="card clickable" onclick="showPage('contact')">
-          <div class="card-image"></div>
+          <div class="card-image"><img src="" alt="prudence-bijoux"></div>
           <div class="card-info">
             <div class="card-info-left">
               <p>Prudence Bijoux</p>
@@ -561,21 +561,21 @@
 
       <section class="cards-row">
         <article class="card">
-          <div class="card-image"></div>
+          <div class="card-image"><img src="" alt="prudence-bijoux"></div>
           <div class="desc">
             Prudence Bijoux est une marque de bijoux faits main, créée pour celles et ceux qui aiment les objets uniques, sensibles et fabriqués avec attention.
           </div>
         </article>
 
         <article class="card">
-          <div class="card-image"></div>
+          <div class="card-image"><img src="" alt="prudence-bijoux"></div>
           <div class="desc">
             Chaque pièce est pensée comme un petit fragment d’histoire à porter au quotidien : textures, matières et détails sont au cœur de la création.
           </div>
         </article>
 
         <article class="card">
-          <div class="card-image"></div>
+          <div class="card-image"><img src="" alt="prudence-bijoux"></div>
           <div class="desc">
             Prudence conçoit et assemble chaque bijou dans son atelier, en petites séries, en privilégiant des matériaux de qualité et des finitions soignées.
           </div>
@@ -591,7 +591,7 @@
 
       <section class="cards-row">
         <article class="card clickable" onclick="showPage('category-bagues')">
-          <div class="card-image"></div>
+          <div class="card-image"><img src="" alt="prudence-bijoux"></div>
           <div class="card-info">
             <div class="card-info-left">
               <p>Bagues</p><p>-</p>
@@ -601,7 +601,7 @@
         </article>
 
         <article class="card clickable" onclick="showPage('category-colliers')">
-          <div class="card-image"></div>
+          <div class="card-image"><img src="" alt="prudence-bijoux"></div>
           <div class="card-info">
             <div class="card-info-left">
               <p>Colliers</p><p>-</p>
@@ -611,7 +611,7 @@
         </article>
 
         <article class="card clickable" onclick="showPage('category-bracelets')">
-          <div class="card-image"></div>
+          <div class="card-image"><img src="" alt="prudence-bijoux"></div>
           <div class="card-info">
             <div class="card-info-left">
               <p>Bracelets</p><p>-</p>
@@ -698,7 +698,7 @@
       <section class="cards-row">
 
         <article class="card">
-          <div class="card-image"></div>
+          <div class="card-image"><img src="" alt="prudence-bijoux"></div>
         </article>
 
         <article class="small-card">
@@ -792,23 +792,23 @@
   // Catalogue centralisé
   const products = [
     {
-      id: 'bague-soleil',
-      name: 'Bague Soleil',
-      category: 'bagues',
-      materials: 'Or 18k, citrine',
-      price: '250€',
-      details: 'Taille ajustable',
-      description: 'Bague dorée ornée d\'une citrine taillée en poire. Pièce délicate inspirée par les premiers rayons du printemps.',
+      id: 'boucles-madelaine',
+      name: 'Boucles Madeleine',
+      category: 'boucles',
+      materials: 'Laiton plaqué or jaune et perle blanche',
+      price: '23€',
+      details: 'Mode percage',
+      description: 'Ces boucles d’oreilles fleurs seraient magnifiques au quotidien ou comme bijoux de mariée !',
       images: ['img/bague-soleil-1.jpg','img/bague-soleil-2.jpg','img/bague-soleil-3.jpg']
     },
     {
-      id: 'bague-nuit',
-      name: 'Bague Nuit',
-      category: 'bagues',
-      materials: 'Argent 925, onyx noir',
-      price: '195€',
-      details: 'Taille 54',
-      description: 'Bague en argent massif sertie d\'un onyx noir mat. Design minimaliste et intemporel.',
+      id: 'boucles-sixtine',
+      name: 'Boucles Sixtine',
+      category: 'boucles',
+      materials: 'Acier inoxydable doré',
+      price: '23€',
+      details: '_',
+      description: 'Elégantes boucles d’oreilles Sixtine, assemblées à la main.',
       images: ['img/bague-nuit-1.jpg','img/bague-nuit-2.jpg','img/bague-nuit-3.jpg']
     },
     {
@@ -879,7 +879,7 @@
       price: '210€',
       details: 'Longueur 19cm',
       description: 'Bracelet chaîne en argent massif avec maillons carrés. Fermoir mousqueton.',
-      images: ['img/bo1.jpg','img/bo2.jpg','img/br1.jpg','img/br2.jpg']
+      images: ['image.jpg','img/bo2.jpg','img/br1.jpg','img/br2.jpg']
     }
   ];
 
@@ -1206,7 +1206,7 @@
     article.dataset.productId = product.id;
 
     article.innerHTML = `
-      <div class="card-image"></div>
+      <div class="card-image"><img src="${product.images}" alt="prudence-bijoux"></div>
       <div class="card-info">
         <div class="card-info-left">
           <p>${product.name}</p>
