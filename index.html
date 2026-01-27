@@ -215,7 +215,7 @@
       background: var(--card-bg);
       padding: 4vmin;
       max-width: 120vmin;
-      height: 60vmin;
+      max-height: 80vmin;
       position: relative;
       display: flex;
       gap: 3vmin;
@@ -223,23 +223,40 @@
 
     .lightbox-close {
       position: absolute;
-      top: 2vmin;
-      right: 2vmin;
-      background: none;
+      top: 3vmin;
+      right: 4vmin;
+      background: rgba(0,0,0,0.4);
       border: none;
-      font-size: 3vmin;
+      font-size: 2.4vmin;
       cursor: pointer;
-      color: var(--text);
+      color: #EEE8D2;
       font-family: inherit;
-      z-index: 10;
+      z-index: 1100;
+      border-radius: 50%;
+      width: 4vmin;
+      height: 4vmin;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
-    .lightbox-image {
-      height: 100%;
-      aspect-ratio: 1/1;
-      background: #02194D;
-      flex-shrink: 0;
-    }
+.lightbox-image {
+  aspect-ratio: 1 / 1;
+  width: min(45vmin, 120vw); /* pick a size you like */
+  background: #02194D;
+  flex-shrink: 0;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.lightbox-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
 
     .lightbox-text {
       flex: 1;
@@ -317,6 +334,48 @@
       word-break: break-word;
     }
 
+    .lightbox-arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(2, 25, 77, 0.8);
+      color: #EEE8D2;
+      border: none;
+      cursor: pointer;
+      font-size: 4.vmin;
+      width: 6vmin;
+      height: 6vmin;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      line-height: 1;
+      z-index: 8;
+      border-radius: 50%;
+    }
+
+    .lightbox-arrow-left {
+      left: 1vmin;
+    }
+
+    .lightbox-arrow-right {
+      right: 1vmin;
+    }
+
+    /* Total price padding (desktop + mobile) */
+    #order-summary {
+      padding-top: 120px;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
     /* MOBILE : tout regroupé ici */
     @media (max-width: 768px) {
       .top-link  {
@@ -327,17 +386,37 @@
         padding-top: 5%;
       }
 
+      .type-label {
+        font-size: 1.9vmin;
+      }
+
       .lightbox-content {
         flex-direction: column;
         height: auto;
         max-height: 80vh;
         overflow-y: auto;
+        width: 100vw;
+        max-width: 100vw;
+        margin: 0;
+        padding: 4vmin;
+      }
+
+      .lightbox {
+        width: 100vw;
+        height: 100vh;
+        left: 0;
       }
 
       .lightbox-image {
         width: 100%;
         height: auto;
         aspect-ratio: 1 / 1;
+      }
+
+      .lightbox-image img {
+        width: 100%;
+        aspect-ratio: 1/1;
+        heigth: auto;
       }
 
       .lightbox-text {
@@ -357,20 +436,19 @@
         padding-bottom: 135px;
       }
 
-/* Cartes verticales : même padding, mais ratio différent */
-.page .card {
-  padding: 1% 10% 0 10%;
-  aspect-ratio: 3 / 2;
-  justify-content: flex-start;
-}
+      /* Cartes verticales : même padding, mais ratio différent */
+      .page .card {
+        padding: 1% 10% 0 10%;
+        aspect-ratio: 3 / 2;
+        justify-content: flex-start;
+      }
 
-/* small-card : padding mobile mais ratio 5/2 conservé */
-.page .small-card {
-  padding: 1% 10% 0 10%;
-  aspect-ratio: 5 / 1;
-  justify-content: flex-start;
-}
-
+      /* small-card : padding mobile mais ratio 5/1 conservé */
+      .page .small-card {
+        padding: 1% 10% 0 10%;
+        aspect-ratio: 5 / 1;
+        justify-content: flex-start;
+      }
 
       .page .card-image {
         width: 100%;
@@ -397,6 +475,14 @@
       #page-commande .card.cart-card {
         aspect-ratio: 3 / 1;
         padding: 0;
+      }
+
+      /* Commander page wrapper when lightbox open */
+      body.lightbox-open #page-commande .cards-row,
+      body.lightbox-open #page-commande {
+        max-width: 100vw;
+        padding-left: 0;
+        padding-right: 0;
       }
     }
   </style>
@@ -501,7 +587,6 @@
     <section class="page" id="page-categories">
       <section class="title-row">
         <h1 class="main-title">Catégories</h1>
-        <p class="type-label">Type: Bagues</p>
       </section>
 
       <section class="cards-row">
@@ -509,7 +594,7 @@
           <div class="card-image"></div>
           <div class="card-info">
             <div class="card-info-left">
-              <p>Bagues</p><p>-</p><p>-</p>
+              <p>Bagues</p><p>-</p>
             </div>
             <div class="card-info-right"><p>VOIR</p></div>
           </div>
@@ -519,7 +604,7 @@
           <div class="card-image"></div>
           <div class="card-info">
             <div class="card-info-left">
-              <p>Colliers</p><p>-</p><p>-</p>
+              <p>Colliers</p><p>-</p>
             </div>
             <div class="card-info-right"><p>VOIR</p></div>
           </div>
@@ -529,7 +614,7 @@
           <div class="card-image"></div>
           <div class="card-info">
             <div class="card-info-left">
-              <p>Bracelets</p><p>-</p><p>-</p>
+              <p>Bracelets</p><p>-</p>
             </div>
             <div class="card-info-right"><p>VOIR</p></div>
           </div>
@@ -548,36 +633,8 @@
         <p class="type-label">Catégorie</p>
       </section>
 
-      <section class="cards-row">
-        <article class="card clickable" onclick="openLightbox('Bague Soleil', 'Or 18k, citrine', '250€', 'Bague dorée ornée d\'une citrine taillée en poire. Pièce délicate inspirée par les premiers rayons du printemps.')">
-          <div class="card-image"></div>
-          <div class="card-info">
-            <div class="card-info-left">
-              <p>Bague Soleil</p><p>Or 18k, citrine</p><p>Taille ajustable</p>
-            </div>
-            <div class="card-info-right"><p>250€</p></div>
-          </div>
-        </article>
-
-        <article class="card clickable" onclick="openLightbox('Bague Nuit', 'Argent 925, onyx noir', '195€', 'Bague en argent massif sertie d\'un onyx noir mat. Design minimaliste et intemporel.')">
-          <div class="card-image"></div>
-          <div class="card-info">
-            <div class="card-info-left">
-              <p>Bague Nuit</p><p>Argent 925, onyx</p><p>Taille 54</p>
-            </div>
-            <div class="card-info-right"><p>195€</p></div>
-          </div>
-        </article>
-
-        <article class="card clickable" onclick="openLightbox('Bague Forêt', 'Cuivre martelé, bois d\'olivier', '165€', 'Bague en cuivre martelé à la main avec incrustation de bois d\'olivier. Chaque pièce est unique.')">
-          <div class="card-image"></div>
-          <div class="card-info">
-            <div class="card-info-left">
-              <p>Bague Forêt</p><p>Cuivre, bois d\'olivier</p><p>Taille 56</p>
-            </div>
-            <div class="card-info-right"><p>165€</p></div>
-          </div>
-        </article>
+      <section class="cards-row" id="cards-bagues">
+        <!-- rempli via JS -->
       </section>
     </section>
 
@@ -591,36 +648,8 @@
         <p class="type-label">Catégorie</p>
       </section>
 
-      <section class="cards-row">
-        <article class="card clickable" onclick="openLightbox('Collier Aube', 'Or 14k, perles d\'eau douce', '320€', 'Collier fin avec pendentif en forme de goutte, orné de petites perles d\'eau douce. Chaîne réglable.')">
-          <div class="card-image"></div>
-          <div class="card-info">
-            <div class="card-info-left">
-              <p>Collier Aube</p><p>Or 14k, perles</p><p>Chaîne 45cm</p>
-            </div>
-            <div class="card-info-right"><p>320€</p></div>
-          </div>
-        </article>
-
-        <article class="card clickable" onclick="openLightbox('Collier Lune', 'Argent oxydé, pierre de lune', '280€', 'Pendentif en forme de croissant avec pierre de lune iridescente. Chaîne argentée texturée.')">
-          <div class="card-image"></div>
-          <div class="card-info">
-            <div class="card-info-left">
-              <p>Collier Lune</p><p>Argent, pierre de lune</p><p>Chaîne 50cm</p>
-            </div>
-            <div class="card-info-right"><p>280€</p></div>
-          </div>
-        </article>
-
-        <article class="card clickable" onclick="openLightbox('Collier Racine', 'Bronze, jaspe rouge', '220€', 'Pendentif organique en bronze avec jaspe rouge brut. Chaîne en laiton vieilli.')">
-          <div class="card-image"></div>
-          <div class="card-info">
-            <div class="card-info-left">
-              <p>Collier Racine</p><p>Bronze, jaspe rouge</p><p>Chaîne 55cm</p>
-            </div>
-            <div class="card-info-right"><p>220€</p></div>
-          </div>
-        </article>
+      <section class="cards-row" id="cards-colliers">
+        <!-- rempli via JS -->
       </section>
     </section>
 
@@ -634,36 +663,8 @@
         <p class="type-label">Catégorie</p>
       </section>
 
-      <section class="cards-row">
-        <article class="card clickable" onclick="openLightbox('Bracelet Éclat', 'Or jaune, quartz rose', '180€', 'Bracelet fin avec trois petites pierres de quartz rose. Fermoir discret et élégant.')">
-          <div class="card-image"></div>
-          <div class="card-info">
-            <div class="card-info-left">
-              <p>Bracelet Éclat</p><p>Or jaune, quartz rose</p><p>Longueur 18cm</p>
-            </div>
-            <div class="card-info-right"><p>180€</p></div>
-          </div>
-        </article>
-
-        <article class="card clickable" onclick="openLightbox('Bracelet Écorce', 'Cuivre texturé, cordon cuir', '135€', 'Bracelet manchette en cuivre avec texture d\'écorce. Cordon en cuir naturel ajustable.')">
-          <div class="card-image"></div>
-          <div class="card-info">
-            <div class="card-info-left">
-              <p>Bracelet Écorce</p><p>Cuivre, cuir</p><p>Ajustable</p>
-            </div>
-            <div class="card-info-right"><p>135€</p></div>
-          </div>
-        </article>
-
-        <article class="card clickable" onclick="openLightbox('Bracelet Chaîne', 'Argent 925, maillons carrés', '210€', 'Bracelet chaîne en argent massif avec maillons carrés. Fermoir mousqueton.')">
-          <div class="card-image"></div>
-          <div class="card-info">
-            <div class="card-info-left">
-              <p>Bracelet Chaîne</p><p>Argent 925</p><p>Longueur 19cm</p>
-            </div>
-            <div class="card-info-right"><p>210€</p></div>
-          </div>
-        </article>
+      <section class="cards-row" id="cards-bracelets">
+        <!-- rempli via JS -->
       </section>
     </section>
 
@@ -679,9 +680,9 @@
 
       <div id="order-summary" style="margin-top:2vmin; font-size:2.1vmin;"></div>
 
-      <div style="margin-top:3vmin;">
+      <div style="margin-top:3vmin; padding-bottom:17vmin;">
         <button id="send-order"
-                style="padding:0.8vmin 2.5vmin; border:1px solid var(--text); background:transparent; cursor:pointer; font-size:2.1vmin;">
+                style="padding:0.8vmin 3.5vmin; border:1px solid var(--text); background:transparent; cursor:pointer; font-size:2.1vmin;">
           Envoyer la commande
         </button>
       </div>
@@ -695,6 +696,11 @@
       </section>
 
       <section class="cards-row">
+
+        <article class="card">
+          <div class="card-image"></div>
+        </article>
+
         <article class="small-card">
           <div class="card-info">
             <div class="card-info-left">
@@ -714,23 +720,29 @@
         <article class="small-card">
           <div class="card-info">
             <div class="card-info-left">
-              <p>Soyez aussi précis que possible</p><p> afin que je vous réponde au plus vite</p><p>-</p>
+              <p>N'hésitez pas</p><p>à me poser vos questions</p><p>et à me suivre sur instagram!</p>
             </div>
           </div>
         </article>
+
       </section>
     </section>
 
   </div>
 </div>
 
-<p class="footer">© 2025 Prudence Bijoux — Wandrille.fm</p>
+<p class="footer">© 2025 Prudence Bijoux — <a href="https:wandrillefm.vercel.app">Wandrille.fm</a></p>
 
 <!-- Lightbox -->
 <div class="lightbox" id="lightbox">
+  <button class="lightbox-close" onclick="closeLightbox()">✕</button>
   <div class="lightbox-content">
-    <button class="lightbox-close" onclick="closeLightbox()">✕</button>
-    <div class="lightbox-image"></div>
+    <div class="lightbox-image">
+      <button class="lightbox-arrow lightbox-arrow-left" aria-label="Image précédente">⟨</button>
+      <img id="lightbox-img" src="" alt="">
+      <button class="lightbox-arrow lightbox-arrow-right" aria-label="Image suivante">⟩</button>
+    </div>
+
     <div class="lightbox-text">
       <div class="lightbox-info-top">
         <h2 class="lightbox-title" id="lightbox-title"></h2>
@@ -776,6 +788,100 @@
   };
 
   const buttons = document.querySelectorAll('[data-page-btn]');
+
+  // Catalogue centralisé
+  const products = [
+    {
+      id: 'bague-soleil',
+      name: 'Bague Soleil',
+      category: 'bagues',
+      materials: 'Or 18k, citrine',
+      price: '250€',
+      details: 'Taille ajustable',
+      description: 'Bague dorée ornée d\'une citrine taillée en poire. Pièce délicate inspirée par les premiers rayons du printemps.',
+      images: ['img/bague-soleil-1.jpg','img/bague-soleil-2.jpg','img/bague-soleil-3.jpg']
+    },
+    {
+      id: 'bague-nuit',
+      name: 'Bague Nuit',
+      category: 'bagues',
+      materials: 'Argent 925, onyx noir',
+      price: '195€',
+      details: 'Taille 54',
+      description: 'Bague en argent massif sertie d\'un onyx noir mat. Design minimaliste et intemporel.',
+      images: ['img/bague-nuit-1.jpg','img/bague-nuit-2.jpg','img/bague-nuit-3.jpg']
+    },
+    {
+      id: 'bague-foret',
+      name: 'Bague Forêt',
+      category: 'bagues',
+      materials: 'Cuivre martelé, bois d\'olivier',
+      price: '165€',
+      details: 'Taille 56',
+      description: 'Bague en cuivre martelé à la main avec incrustation de bois d\'olivier. Chaque pièce est unique.',
+      images: ['img/bague-foret-1.jpg','img/bague-foret-2.jpg','img/bague-foret-3.jpg']
+    },
+    {
+      id: 'collier-aube',
+      name: 'Collier Aube',
+      category: 'colliers',
+      materials: 'Or 14k, perles d\'eau douce',
+      price: '320€',
+      details: 'Chaîne 45cm',
+      description: 'Collier fin avec pendentif en forme de goutte, orné de petites perles d\'eau douce. Chaîne réglable.',
+      images: ['img/collier-aube-1.jpg','img/collier-aube-2.jpg','img/collier-aube-3.jpg']
+    },
+    {
+      id: 'collier-lune',
+      name: 'Collier Lune',
+      category: 'colliers',
+      materials: 'Argent oxydé, pierre de lune',
+      price: '280€',
+      details: 'Chaîne 50cm',
+      description: 'Pendentif en forme de croissant avec pierre de lune iridescente. Chaîne argentée texturée.',
+      images: ['img/collier-lune-1.jpg','img/collier-lune-2.jpg','img/collier-lune-3.jpg']
+    },
+    {
+      id: 'collier-racine',
+      name: 'Collier Racine',
+      category: 'colliers',
+      materials: 'Bronze, jaspe rouge',
+      price: '220€',
+      details: 'Chaîne 55cm',
+      description: 'Pendentif organique en bronze avec jaspe rouge brut. Chaîne en laiton vieilli.',
+      images: ['br1.jpg','br2.jpg','bo1.jpg','bo2.jpg']
+    },
+    {
+      id: 'bracelet-eclat',
+      name: 'Bracelet Éclat',
+      category: 'bracelets',
+      materials: 'Or jaune, quartz rose',
+      price: '180€',
+      details: 'Longueur 18cm',
+      description: 'Bracelet fin avec trois petites pierres de quartz rose. Fermoir discret et élégant.',
+      images: ['img/bracelet-eclat-1.jpg','img/bracelet-eclat-2.jpg','img/bracelet-eclat-3.jpg']
+    },
+    {
+      id: 'bracelet-ecorce',
+      name: 'Bracelet Écorce',
+      category: 'bracelets',
+      materials: 'Cuivre texturé, cordon cuir',
+      price: '135€',
+      details: 'Ajustable',
+      description: 'Bracelet manchette en cuivre avec texture d\'écorce. Cordon en cuir naturel ajustable.',
+      images: ['img/bracelet-ecorce-1.jpg','img/bracelet-ecorce-2.jpg','img/bracelet-ecorce-3.jpg']
+    },
+    {
+      id: 'bracelet-chaine',
+      name: 'Bracelet Chaîne',
+      category: 'bracelets',
+      materials: 'Argent 925, maillons carrés',
+      price: '210€',
+      details: 'Longueur 19cm',
+      description: 'Bracelet chaîne en argent massif avec maillons carrés. Fermoir mousqueton.',
+      images: ['img/bo1.jpg','img/bo2.jpg','img/br1.jpg','img/br2.jpg']
+    }
+  ];
 
   function getTopButtonNameFromPage(pageName) {
     if (pageName.startsWith('category-')) return 'categories';
@@ -834,7 +940,7 @@
       article.innerHTML = `
         <div class="card-info">
           <div class="card-info-left">
-            <p><strong>${item.id}</strong></p>
+            <p><strong>${item.name || item.id}</strong></p>
             <p>${item.materials}</p>
             <p>${item.price}</p>
             ${item.personalization ? `<p><em>Perso : ${item.personalization}</em></p>` : ''}
@@ -926,8 +1032,42 @@
   let currentProduct = null;
   let currentCartIndex = null;
 
-  function openLightbox(title, materials, price, description, options = {}) {
-    const { personalizationFromCart = '', mode = 'catalogue' } = options;
+  // Galerie d'images dans la lightbox
+  let currentImages = [];
+  let currentImageIndex = 0;
+
+  const lightboxImgEl = document.getElementById('lightbox-img');
+  const leftArrow = document.querySelector('.lightbox-arrow-left');
+  const rightArrow = document.querySelector('.lightbox-arrow-right');
+
+  function updateLightboxImage() {
+    if (!currentImages.length) return;
+    const src = currentImages[currentImageIndex];
+    lightboxImgEl.src = src;
+    lightboxImgEl.alt = currentProduct ? currentProduct.name : '';
+  }
+
+  leftArrow.addEventListener('click', function (e) {
+    e.stopPropagation();
+    if (!currentImages.length) return;
+    currentImageIndex = (currentImageIndex - 1 + currentImages.length) % currentImages.length;
+    updateLightboxImage();
+  });
+
+  rightArrow.addEventListener('click', function (e) {
+    e.stopPropagation();
+    if (!currentImages.length) return;
+    currentImageIndex = (currentImageIndex + 1) % currentImages.length;
+    updateLightboxImage();
+  });
+
+  function openLightbox(productName, materials, price, description, options = {}) {
+    const {
+      personalizationFromCart = '',
+      mode = 'catalogue',
+      images = [],
+      productId = null
+    } = options;
 
     const lightbox = document.getElementById('lightbox');
     const titleEl = document.getElementById('lightbox-title');
@@ -937,18 +1077,23 @@
     const addBtn = document.getElementById('lightbox-add');
     const statusEl = document.getElementById('lightbox-status');
 
+    // init galerie
+    currentImages = images.length ? images : [];
+    currentImageIndex = 0;
+    updateLightboxImage();
+
     customEl.value = personalizationFromCart || '';
     statusEl.textContent = '';
     addBtn.textContent = mode === 'commande' ? 'Mettre à jour' : 'Ajouter au panier';
 
-    titleEl.textContent = title;
+    titleEl.textContent = productName;
     detailsEl.innerHTML = `
       <p><strong>Matériaux:</strong> ${materials}</p>
       ${price ? `<p><strong>Prix:</strong> ${price}</p>` : ''}
     `;
     descriptionEl.innerHTML = description ? `<p>${description}</p>` : '';
 
-    currentProduct = { title, materials, price };
+    currentProduct = { id: productId, name: productName, materials, price };
 
     const newAddBtn = addBtn.cloneNode(true);
     addBtn.parentNode.replaceChild(newAddBtn, addBtn);
@@ -969,7 +1114,8 @@
         newAddBtn.textContent = 'Mis à jour';
       } else {
         addToCart({
-          id: currentProduct.title,
+          id: currentProduct.id || currentProduct.name,
+          name: currentProduct.name,
           materials: currentProduct.materials,
           price: currentProduct.price,
           quantity: 1,
@@ -981,6 +1127,7 @@
       statusEl.textContent = '';
     });
 
+    document.body.classList.add('lightbox-open');
     lightbox.classList.add('active');
   }
 
@@ -990,20 +1137,27 @@
     if (!item) return;
 
     currentCartIndex = index;
+
+    // retrouver éventuellement les images depuis products (optionnel)
+    const baseProduct = products.find(p => p.id === item.id);
+
     openLightbox(
-      item.id,
+      item.name || item.id,
       item.materials,
       item.price,
-      '',
+      baseProduct ? baseProduct.description : '',
       {
         personalizationFromCart: item.personalization || '',
-        mode: 'commande'
+        mode: 'commande',
+        images: baseProduct ? baseProduct.images : [],
+        productId: item.id
       }
     );
   }
 
   function closeLightbox() {
     document.getElementById('lightbox').classList.remove('active');
+    document.body.classList.remove('lightbox-open');
   }
 
   document.getElementById('lightbox').addEventListener('click', function(e) {
@@ -1019,7 +1173,7 @@
     let body = 'Bonjour,%0D%0A%0D%0AJe souhaite passer la commande suivante :%0D%0A%0D%0A';
 
     cart.forEach(item => {
-      body += `- ${item.quantity || 1} x ${item.id} (${item.materials}, ${item.price})%0D%0A`;
+      body += `- ${item.quantity || 1} x ${item.name || item.id} (${item.materials}, ${item.price})%0D%0A`;
       if (item.personalization) {
         body += `  Personnalisation : ${item.personalization}%0D%0A`;
       }
@@ -1045,6 +1199,66 @@
       window.location.href = mailto;
     });
   }
+
+  function createProductCard(product) {
+    const article = document.createElement('article');
+    article.className = 'card clickable';
+    article.dataset.productId = product.id;
+
+    article.innerHTML = `
+      <div class="card-image"></div>
+      <div class="card-info">
+        <div class="card-info-left">
+          <p>${product.name}</p>
+          <p>${product.materials}</p>
+          <p>${product.details}</p>
+        </div>
+        <div class="card-info-right"><p>${product.price}</p></div>
+      </div>
+    `;
+
+    article.addEventListener('click', () => {
+      openLightbox(
+        product.name,
+        product.materials,
+        product.price,
+        product.description,
+        { images: product.images, productId: product.id }
+      );
+    });
+
+    return article;
+  }
+
+  function renderProductCategories() {
+    const baguesContainer = document.getElementById('cards-bagues');
+    const colliersContainer = document.getElementById('cards-colliers');
+    const braceletsContainer = document.getElementById('cards-bracelets');
+
+    if (baguesContainer) {
+      baguesContainer.innerHTML = '';
+      products
+        .filter(p => p.category === 'bagues')
+        .forEach(p => baguesContainer.appendChild(createProductCard(p)));
+    }
+
+    if (colliersContainer) {
+      colliersContainer.innerHTML = '';
+      products
+        .filter(p => p.category === 'colliers')
+        .forEach(p => colliersContainer.appendChild(createProductCard(p)));
+    }
+
+    if (braceletsContainer) {
+      braceletsContainer.innerHTML = '';
+      products
+        .filter(p => p.category === 'bracelets')
+        .forEach(p => braceletsContainer.appendChild(createProductCard(p)));
+    }
+  }
+
+  // Initialisation des catégories
+  renderProductCategories();
 </script>
 
 </body>
