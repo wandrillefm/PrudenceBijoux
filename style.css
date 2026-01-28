@@ -137,9 +137,22 @@
     }
 
     .card-image {
-      aspect-ratio: 1/1;
-      background: #02194D;
+  aspect-ratio: 1 / 1;
+  width: min(45vmin, 120vw); /* pick a size you like */
+  background: #02194D;
+  flex-shrink: 0;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
     }
+
+.card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
 
     .card-info {
       display: flex;
@@ -487,6 +500,7 @@
 .page-transition.active {
   transform: translateY(0); /* couvre tout l'écran */
 }
+
 
 
 
