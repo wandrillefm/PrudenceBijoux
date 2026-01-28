@@ -371,9 +371,15 @@ function openLightbox(productName, materials, price, description, options = {}) 
   customEl.value = personalizationFromCart || '';
   customEl.disabled = !personnalisable;
   customEl.placeholder = personnalisable
-    ? 'Texte à graver'
+    ? 'Couleurs/Taille'
     : 'Personnalisation non disponible pour cet article';
-
+  
+  const customWrapper = document.getElementById('lightbox-custom-wrapper');
+  if (customWrapper) {
+    customWrapper.style.opacity = personnalisable ? '1' : '0';
+    customWrapper.style.pointerEvents = personnalisable ? 'auto' : 'none';
+  }
+  
   statusEl.textContent = '';
   addBtn.textContent = mode === 'commande' ? 'Mettre à jour' : 'Ajouter au panier';
 
@@ -555,4 +561,5 @@ function renderProductCategories() {
 
 // Initialisation des catégories
 renderProductCategories();
+
 
