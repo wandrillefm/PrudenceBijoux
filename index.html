@@ -526,7 +526,7 @@
         <article class="card clickable" onclick="showPage('categories')">
           <div class="card-image"><img src="" alt="prudence-bijoux"></div>
           <div class="desc">
-            Découvrir les catégories de bijoux : bagues, colliers et bracelets, pour explorer toutes les créations disponibles.
+            Découvrir les catégories de bijoux : boucles, colliers et bracelets, pour explorer toutes les créations disponibles.
           </div>
         </article>
 
@@ -590,11 +590,11 @@
       </section>
 
       <section class="cards-row">
-        <article class="card clickable" onclick="showPage('category-bagues')">
+        <article class="card clickable" onclick="showPage('category-boucles')">
           <div class="card-image"><img src="" alt="prudence-bijoux"></div>
           <div class="card-info">
             <div class="card-info-left">
-              <p>Bagues</p><p>-</p>
+              <p>boucles</p><p>-</p>
             </div>
             <div class="card-info-right"><p>VOIR</p></div>
           </div>
@@ -623,17 +623,17 @@
       </section>
     </section>
 
-    <!-- SUBPAGE: Catégorie Bagues -->
-    <section class="page" id="page-category-bagues">
+    <!-- SUBPAGE: Catégorie boucles -->
+    <section class="page" id="page-category-boucles">
       <section class="title-row">
         <button class="back-link" onclick="showPage('categories')" aria-label="Retour aux catégories">
           ←
         </button>
-        <h1 class="main-title">Bagues</h1>
+        <h1 class="main-title">boucles</h1>
         <p class="type-label">Catégorie</p>
       </section>
 
-      <section class="cards-row" id="cards-bagues">
+      <section class="cards-row" id="cards-boucles">
         <!-- rempli via JS -->
       </section>
     </section>
@@ -780,7 +780,7 @@
     menu: document.getElementById('page-menu'),
     presentation: document.getElementById('page-presentation'),
     categories: document.getElementById('page-categories'),
-    'category-bagues': document.getElementById('page-category-bagues'),
+    'category-boucles': document.getElementById('page-category-boucles'),
     'category-colliers': document.getElementById('page-category-colliers'),
     'category-bracelets': document.getElementById('page-category-bracelets'),
     commande: document.getElementById('page-commande'),
@@ -814,7 +814,7 @@
     {
       id: 'bague-foret',
       name: 'Bague Forêt',
-      category: 'bagues',
+      category: 'boucles',
       materials: 'Cuivre martelé, bois d\'olivier',
       price: '165€',
       details: 'Taille 56',
@@ -1231,15 +1231,15 @@
   }
 
   function renderProductCategories() {
-    const baguesContainer = document.getElementById('cards-bagues');
+    const bouclesContainer = document.getElementById('cards-boucles');
     const colliersContainer = document.getElementById('cards-colliers');
     const braceletsContainer = document.getElementById('cards-bracelets');
 
-    if (baguesContainer) {
-      baguesContainer.innerHTML = '';
+    if (bouclesContainer) {
+      bouclesContainer.innerHTML = '';
       products
-        .filter(p => p.category === 'bagues')
-        .forEach(p => baguesContainer.appendChild(createProductCard(p)));
+        .filter(p => p.category === 'boucles')
+        .forEach(p => bouclesContainer.appendChild(createProductCard(p)));
     }
 
     if (colliersContainer) {
