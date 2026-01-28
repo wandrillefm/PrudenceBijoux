@@ -76,7 +76,7 @@ const products = [
     price: '15€',
     details: 'Personnalisable',
     description: 'Une médaille dorée avec une croix blanche, le tout sur un ruban de couleur',
-    images: ['image15.jpg','image12.jpg','image30.jpg','image32.jpg','image54.jpg'],
+    images: ['image30.jpg','image32.jpg','image12.jpg','image15.jpg','image54.jpg'],
     personnalisable: true
   },
   {
@@ -572,6 +572,7 @@ function renderProductCategories() {
 
 // Initialisation des catégories
 renderProductCategories();
+
 
 
 
