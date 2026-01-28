@@ -341,7 +341,7 @@
       color: #EEE8D2;
       border: none;
       cursor: pointer;
-      font-size: 4.vmin;
+      font-size: 7vmin;
       width: 10vmin;
       height: 10vmin;
       display: flex;
@@ -498,6 +498,7 @@
 .page-transition.active {
   transform: translateY(0); /* couvre tout l'écran */
 }
+
 
 
 
