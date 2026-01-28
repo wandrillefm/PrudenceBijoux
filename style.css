@@ -477,7 +477,7 @@
 .page-transition {
   position: fixed;
   inset: 0;
- /* background: #EEE8D2;  même beige que le fond */
+  background: #EEE8D2;  /*même beige que le fond */
   backround: #02194D;
   pointer-events: none;
   transform: translateY(-100%); /* caché en bas */
@@ -488,5 +488,6 @@
 .page-transition.active {
   transform: translateY(0); /* couvre tout l'écran */
 }
+
 
 
