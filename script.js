@@ -118,7 +118,7 @@ const products = [
     category: 'colliers',
     materials: 'Pierres',
     price: '30€',
-    details: 'Personnalisable',
+    details: 'Plusieurs coloris',
     description: 'Pierres de couleurs: Violet, Rouge, Bleu foncé, Vert foncé',
     images: ['image1.jpg','image17.jpg','image27.jpg','image33.jpg','image37.jpg'],
     personnalisable: false   // si tu veux aussi perso ici, passe à true
@@ -572,6 +572,7 @@ function renderProductCategories() {
 
 // Initialisation des catégories
 renderProductCategories();
+
 
 
 
