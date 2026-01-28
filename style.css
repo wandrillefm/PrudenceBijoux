@@ -139,7 +139,7 @@
     .card-image {
   aspect-ratio: 1 / 1;
   width: min(45vmin, 120vw); /* pick a size you like */
-  background: #02194D;
+  background: transparent;
   flex-shrink: 0;
   position: relative;
   display: flex;
@@ -244,7 +244,7 @@
 .lightbox-image {
   aspect-ratio: 1 / 1;
   width: min(45vmin, 120vw); /* pick a size you like */
-  background: #02194D;
+  background: transparent;
   flex-shrink: 0;
   position: relative;
   display: flex;
@@ -500,6 +500,7 @@
 .page-transition.active {
   transform: translateY(0); /* couvre tout l'écran */
 }
+
 
 
 
