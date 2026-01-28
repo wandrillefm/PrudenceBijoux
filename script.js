@@ -386,38 +386,38 @@ function openLightbox(productName, materials, price, description, options = {}) 
 
   currentProduct = { id: productId, name: productName, materials, price, personnalisable };
 
-  const newAddBtn = addBtn.cloneNode(true);
-  addBtn.parentNode.replaceChild(newAddBtn, addBtn);
+const newAddBtn = addBtn.cloneNode(true);
+addBtn.parentNode.replaceChild(newAddBtn, addBtn);
 
-  newAddBtn.addEventLis
-tener('click', function () {
-    if (!currentProduct) return;
+newAddBtn.addEventListener('click', function () {
+  if (!currentProduct) return;
 
-    const personalization = currentProduct.personnalisable ? customEl.value.trim() : '';
-    const cart = getCart();
+  const personalization = currentProduct.personnalisable ? customEl.value.trim() : '';
+  const cart = getCart();
 
-    if (mode === 'commande' && currentCartIndex !== null) {
-      const item = cart[currentCartIndex];
-      if (item) {
-        item.personalization = personalization;
-        saveCart(cart);
-        renderCartOnOrderPage();
-      }
-      newAddBtn.textContent = 'Mis à jour';
-    } else {
-      addToCart({
-        id: currentProduct.id || currentProduct.name,
-        name: currentProduct.name,
-        materials: currentProduct.materials,
-        price: currentProduct.price,
-        quantity: 1,
-        personalization
-      });
-      newAddBtn.textContent = 'Ajouté au panier';
+  if (mode === 'commande' && currentCartIndex !== null) {
+    const item = cart[currentCartIndex];
+    if (item) {
+      item.personalization = personalization;
+      saveCart(cart);
+      renderCartOnOrderPage();
     }
+    newAddBtn.textContent = 'Mis à jour';
+  } else {
+    addToCart({
+      id: currentProduct.id || currentProduct.name,
+      name: currentProduct.name,
+      materials: currentProduct.materials,
+      price: currentProduct.price,
+      quantity: 1,
+      personalization
+    });
+    newAddBtn.textContent = 'Ajouté au panier';
+  }
 
-    statusEl.textContent = '';
-  });
+  statusEl.textContent = '';
+});
+
 
   document.body.classList.add('lightbox-open');
   lightbox.classList.add('active');
@@ -555,3 +555,4 @@ function renderProductCategories() {
 
 // Initialisation des catégories
 renderProductCategories();
+
