@@ -72,7 +72,7 @@
       price: '15€',
       details: 'Personnalisable',
       description: 'Une médaille dorée avec une croix blanche, le tout sur un ruban de couleur',
-      images: ['image12.jpg','image15.jpg','image30.jpg','image32.jpg','image54.jpg']
+      images: ['image15.jpg','image12.jpg','image30.jpg','image32.jpg','image54.jpg']
     },
     {
       id: 'bracelet-sybille',
@@ -539,6 +539,7 @@ function showPage(name) {
 
   // Initialisation des catégories
   renderProductCategories();
+
 
 
 
