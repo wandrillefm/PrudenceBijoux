@@ -481,6 +481,8 @@
       body.lightbox-open #page-commande .cards-row,
       body.lightbox-open #page-commande {
         max-width: 100vw;
+        height: 6vmin;
+        resize: none;
         padding-left: 0;
         padding-right: 0;
       }
@@ -499,15 +501,3 @@
 .page-transition.active {
   transform: translateY(0); /* couvre tout l'écran */
 }
-
-
-
-
-
-
-
-
-
-
-
-
