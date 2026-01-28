@@ -337,7 +337,7 @@
       position: absolute;
       top: 50%;
       transform: translateY(-50%);
-      background: rgba(2, 25, 77, 0.8);
+      background: rgba(2, 25, 77, 0);
       color: #EEE8D2;
       border: none;
       cursor: pointer;
@@ -498,6 +498,7 @@
 .page-transition.active {
   transform: translateY(0); /* couvre tout l'écran */
 }
+
 
 
 
