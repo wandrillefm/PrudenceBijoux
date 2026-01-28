@@ -486,7 +486,7 @@ function showPage(name) {
     article.dataset.productId = product.id;
 
     article.innerHTML = `
-      <div class="card-image"><img src="${product.images}" alt="prudence-bijoux"></div>
+      <div class="card-image"><img src="${product.images[0]}" alt="prudence-bijoux"></div>
       <div class="card-info">
         <div class="card-info-left">
           <p>${product.name}</p>
@@ -539,3 +539,4 @@ function showPage(name) {
 
   // Initialisation des catégories
   renderProductCategories();
+
