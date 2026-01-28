@@ -503,9 +503,12 @@
 }
 
 textarea {
-  rows: 8;
+  haight: 8em;
   width: 100%;
   resize: none !important;
+  box-sizing: border-box;
+  font-family: inherit;
 }
+
 
 
