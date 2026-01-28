@@ -15,7 +15,7 @@
   // Catalogue centralisé
   const products = [
     {
-      id: 'boucles-madelaine',
+      id: 'boucles-madeleine',
       name: 'Boucles Madeleine',
       category: 'boucles',
       materials: 'Laiton plaqué or jaune et perle blanche',
@@ -102,7 +102,7 @@
       price: '15€',
       details: 'Couleurs: Rouge, vert, violet, café, crème',
       description: 'Bracelet stylisé à forme carré et ronde de 1.5 cm de diamètre par perles. Montées sur fil élastique solide, ce bracelet s’adapte à tous les poignets.',
-      images: ['image.jpg','image28.jpg','image39.jpg','image40.jpg','image44.jpg','image45.jpg','image47.jpg','image48.jpg','image51.jpg','image56.jpg']
+      images: ['image28.jpg','image39.jpg','image40.jpg','image44.jpg','image45.jpg','image47.jpg','image48.jpg','image51.jpg','image56.jpg']
     },
     {
       id: 'collier-pierres',
@@ -539,5 +539,6 @@ function showPage(name) {
 
   // Initialisation des catégories
   renderProductCategories();
+
 
 
