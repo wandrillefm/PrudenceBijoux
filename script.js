@@ -131,7 +131,7 @@ const products = [
     price: '17€',
     details: 'Couleurs: Voir les photos',
     description: 'Médaille de Marie entourée de perles',
-    images: ['image8.jpg','image16.jpg','image20.jpg','image31.jpg','image25.jpg','image34.jpg','image38.jpg','image41.jpg','image42.jpg','image52.jpg'],
+    images: ['image8.jpg','image16.jpg','image20.jpg','image31.jpg','image25.jpg','image38.jpg','image52.jpg'],
     personnalisable: true
   },
   {
@@ -142,7 +142,7 @@ const products = [
     price: '25€',
     details: 'Couleurs: Voir les photos',
     description: 'Médaille de Marie entourée de perles + collier en perles',
-    images: ['image11.jpg','image21.jpg','image43.jpg'],
+    images: ['image11.jpg','image43.jpg'],
     personnalisable: true
   },
   {
@@ -155,6 +155,17 @@ const products = [
     description: 'Médaille de Marie entourée de perles + collier chaîne en acier inoxydable (perles blanches/noires/simple)',
     images: ['image5.jpg','image14.jpg','image49.jpg'],
     personnalisable: true
+  },
+  {
+    id: 'couleurs-colliers-marie',
+    name: 'Couleurs collier Marie',
+    category: 'colliers',
+    materials: '4 palettes',
+    price: '-',
+    details: 'Couleurs: Voir les photos',
+    description: 'Précisez dans la personnalisation',
+    images: ['image21.jpg','image25.jpg','image34.jpg','image41.jpg','image42.jpg'],
+    personnalisable: false
   }
 ];
 
@@ -561,6 +572,7 @@ function renderProductCategories() {
 
 // Initialisation des catégories
 renderProductCategories();
+
 
 
 
