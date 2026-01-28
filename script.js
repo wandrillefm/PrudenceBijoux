@@ -50,9 +50,9 @@ const products = [
     id: 'bracelet-marin',
     name: 'Bracelet Marin',
     category: 'bracelets',
-    materials: 'Ambre?',
+    materials: 'Elastique',
     price: '18€',
-    details: 'Longueur?',
+    details: 'Marron blanc et noir',
     description: 'Bracelet de Xcm de large, avec elastiques',
     images: ['image2.jpg','image6.jpg'],
     personnalisable: false
@@ -83,22 +83,22 @@ const products = [
     id: 'bracelet-sybille',
     name: 'Bracelet Sybille',
     category: 'bracelets',
-    materials: 'materiaux?',
+    materials: 'Elastique',
     price: '19€',
     details: 'Couleurs: Marron, gris, rose, doré',
     description: 'Bracelet élastique géométrique, désigné tendance, mini manchette. Revers en aciers inoxydable',
-    images: ['image23.jpg','image29.jpg','image36.jpg','image50.jpg'],
+    images: ['image23.jpg','image26.jpg','image29.jpg','image36.jpg','image50.jpg'],
     personnalisable: false
   },
   {
     id: 'bracelet-sybille-2',
     name: 'Bracelet Sybille',
     category: 'bracelets',
-    materials: 'materiaux?',
+    materials: 'Elastique',
     price: '19€',
     details: 'Couleurs: Rose; violet; vert; bleu',
     description: 'Bracelet élastique géométrique, désigné tendance, mini manchette. Revers en aciers inoxydable',
-    images: ['image9.jpg','image19.jpg','image26.jpg','image36.jpg','image50.jpg'],
+    images: ['image9.jpg','image19.jpg','image29.jpg','image36.jpg','image50.jpg'],
     personnalisable: false
   },
   {
@@ -572,6 +572,7 @@ function renderProductCategories() {
 
 // Initialisation des catégories
 renderProductCategories();
+
 
 
 
