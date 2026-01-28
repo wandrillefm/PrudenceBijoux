@@ -503,5 +503,8 @@
 }
 
 textarea {
+  height: 2vmin;
+  width: 100%;
   resize: none !important;
 }
+
