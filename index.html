@@ -300,11 +300,11 @@
         <label for="lightbox-custom" style="display:block; margin-bottom:0.5vmin; font-size:2.1vmin;">
           Personnaliser (taille, gravure, demande particulière…) :
         </label>
-        <textarea id="lightbox-custom"
-                  rows="5"
-                  maxlength="50"
-                  style="width:100%; font-size:2.1vmin; padding:0.5vmin; resize:none;"></textarea>
-        <small style="font-size:2.1vmin;">(50 caractères maximum)</small>
+        <div id="lightbox-custom-wrapper">
+          <textarea id="lightbox-custom" maxlength="50"></textarea>
+          <p id="lightbox-custom-max">50 caractères max</p>
+        </div>
+
       </div>
 
       <!-- Bouton ajouter au panier / mettre à jour -->
