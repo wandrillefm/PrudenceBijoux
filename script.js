@@ -114,9 +114,9 @@ const products = [
   },
   {
     id: 'collier-pierres',
-    name: 'Collier Grosses Pierre (Rivage?)',
+    name: 'Collier Grosses Pierres',
     category: 'colliers',
-    materials: 'Kayou?',
+    materials: 'Pierres',
     price: '30€',
     details: 'Personnalisable',
     description: 'Pierres de couleurs: Violet, Rouge, Bleu foncé, Vert foncé',
@@ -561,5 +561,6 @@ function renderProductCategories() {
 
 // Initialisation des catégories
 renderProductCategories();
+
 
 
