@@ -32,7 +32,7 @@ const products = [
     price: '17€',
     details: 'petites créoles pour oreilles percées',
     description: 'Découvrez notre Boucle d’Oreilles petite créole pendante pampilles vertes',
-    images: [''],
+    images: ['angelina1.jpeg','angelina2.jpeg'],
     personnalisable: false
   },
   {
@@ -96,7 +96,7 @@ const products = [
     category: 'bracelets',
     materials: 'Elastique',
     price: '19€',
-    details: 'Couleurs: Marron, gris, rose, doré',
+    details: 'Couleurs: Rose; violet; vert; bleu',
     description: 'Bracelet élastique géométrique, désigné tendance, mini manchette. Revers en aciers inoxydable',
     images: ['image23.jpg','image26.jpg','image29.jpg','image36.jpg','image50.jpg'],
     personnalisable: false
@@ -107,7 +107,7 @@ const products = [
     category: 'bracelets',
     materials: 'Elastique',
     price: '19€',
-    details: 'Couleurs: Rose; violet; vert; bleu',
+    details: 'Couleurs: Marron, gris, rose, doré',
     description: 'Bracelet élastique géométrique, désigné tendance, mini manchette. Revers en aciers inoxydable',
     images: ['image9.jpg','image19.jpg','image29.jpg','image36.jpg','image50.jpg'],
     personnalisable: false
@@ -132,7 +132,7 @@ const products = [
     details: 'Plusieurs coloris',
     description: 'Pierres de couleurs: Violet, Rouge, Bleu foncé, Vert foncé',
     images: ['image1.jpg','image17.jpg','image27.jpg','image33.jpg','image37.jpg'],
-    personnalisable: false   // si tu veux aussi perso ici, passe à true
+    personnalisable: false
   },
   {
     id: 'medaille-marie',
@@ -147,7 +147,7 @@ const products = [
   },
   {
     id: 'collier-marie-a',
-    name: 'Collier Marie',
+    name: 'Collier Marie sur perles',
     category: 'colliers',
     materials: 'Perles et médaille',
     price: '25€',
@@ -157,14 +157,14 @@ const products = [
     personnalisable: true
   },
   {
-    id: 'collierb-marie-b',
-    name: 'Collier Marie',
+    id: 'collier-marie-b',
+    name: 'Collier Marie sur chaine',
     category: 'colliers',
     materials: 'Perles et médaille',
     price: '30€',
     details: 'Couleurs: Voir les photos',
     description: 'Médaille de Marie entourée de perles + collier chaîne en acier inoxydable (perles blanches/noires/simple)',
-    images: ['image5.jpg','image14.jpg','image49.jpg'],
+    images: ['medaille chaine marie 3.jpeg','medaille chaine marie 2.jpeg','medaille chaine marie.jpeg','medaille marie 1.jpeg','image5.jpg','image14.jpg','image49.jpg'],
     personnalisable: true
   },
   {
@@ -583,6 +583,7 @@ function renderProductCategories() {
 
 // Initialisation des catégories
 renderProductCategories();
+
 
 
 
