@@ -32,7 +32,7 @@ const products = [
     price: '17€',
     details: 'petites créoles pour oreilles percées',
     description: 'Découvrez notre Boucle d’Oreilles petite créole pendante pampilles vertes',
-    images: ['image4.jpg','image18.jpg','image22.jpg','image24.jpg'],
+    images: [''],
     personnalisable: false
   },
   {
@@ -583,6 +583,7 @@ function renderProductCategories() {
 
 // Initialisation des catégories
 renderProductCategories();
+
 
 
 
