@@ -164,7 +164,7 @@ const products = [
     price: '30€',
     details: 'Couleurs: Voir les photos',
     description: 'Médaille de Marie entourée de perles + collier chaîne en acier inoxydable (perles blanches/noires/simple)',
-    images: ['medaille chaine marie 3.jpeg','medaille chaine marie 2.jpeg','medaille chaine marie.jpeg','medaille marie 1.jpeg','image5.jpg','image14.jpg','image49.jpg'],
+    images: ['medaille chaine marie 3.jpeg','medaille chaine marie 2.jpeg','medaille chaine marie.jpeg','medaille marie 1.webp','image5.jpg','image14.jpg','image49.jpg'],
     personnalisable: true
   },
   {
@@ -583,6 +583,7 @@ function renderProductCategories() {
 
 // Initialisation des catégories
 renderProductCategories();
+
 
 
 
