@@ -503,12 +503,13 @@
 }
 
 textarea {
-  haight: 8em;
+  haight: 12em;
   width: 100%;
   resize: none !important;
   box-sizing: border-box;
   font-family: inherit;
 }
+
 
 
 
