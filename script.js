@@ -142,7 +142,7 @@ const products = [
     price: '17€',
     details: 'Couleurs: Voir les photos',
     description: 'Médaille de Marie entourée de perles',
-    images: ['image8.jpg','image16.jpg','image20.jpg','image31.jpg','image25.jpg','image38.jpg','image52.jpg'],
+    images: ['image8.jpg','image16.jpg','image20.jpg','image31.jpg','image38.jpg','image52.jpg'],
     personnalisable: true
   },
   {
@@ -583,6 +583,7 @@ function renderProductCategories() {
 
 // Initialisation des catégories
 renderProductCategories();
+
 
 
 
