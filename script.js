@@ -24,6 +24,17 @@ const products = [
     images: ['image3.jpg','image7.jpg','image53.jpg'],
     personnalisable: false
   },
+    {
+    id: 'boucles-angelina',
+    name: 'Boucles Angelina',
+    category: 'boucles',
+    materials: 'Acier inoxydable',
+    price: '17€',
+    details: 'petites créoles pour oreilles percées',
+    description: 'Découvrez notre Boucle d’Oreilles petite créole pendante pampilles vertes',
+    images: ['image4.jpg','image18.jpg','image22.jpg','image24.jpg'],
+    personnalisable: false
+  },
   {
     id: 'boucles-sixtine',
     name: 'Boucles Sixtine',
@@ -572,6 +583,7 @@ function renderProductCategories() {
 
 // Initialisation des catégories
 renderProductCategories();
+
 
 
 
