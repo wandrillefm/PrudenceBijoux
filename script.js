@@ -120,7 +120,7 @@ const products = [
     price: '15€',
     details: 'Couleurs: Rouge, vert, violet, café, crème',
     description: 'Bracelet stylisé à forme carré et ronde de 1.5 cm de diamètre par perles. Montées sur fil élastique solide, ce bracelet s’adapte à tous les poignets.',
-    images: ['image28.jpg','image39.jpg','image40.jpg','image44.jpg','image45.jpg','image47.jpg','image48.jpg','image51.jpg','image56.jpg'],
+    images: ['image45.jpg','image28.jpg','image39.jpg','image40.jpg','image44.jpg','image47.jpg','image48.jpg','image51.jpg','image56.jpg'],
     personnalisable: false
   },
   {
@@ -583,6 +583,7 @@ function renderProductCategories() {
 
 // Initialisation des catégories
 renderProductCategories();
+
 
 
 
