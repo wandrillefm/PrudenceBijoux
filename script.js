@@ -24,6 +24,17 @@ const products = [
     images: ['image3.jpg','image7.jpg','image53.jpg'],
     personnalisable: false
   },
+  {
+    id: 'boucles-madeleine',
+    name: 'Boucles Madeleine',
+    category: 'boucles',
+    materials: 'Laiton plaqué or jaune et perle blanche',
+    price: '23€',
+    details: 'à tiges',
+    description: 'Ces boucles d’oreilles fleurs seraient magnifiques au quotidien ou comme bijoux de mariée !',
+    images: ['image3.jpg','image7.jpg','image53.jpg'],
+    personnalisable: false
+  },
     {
     id: 'boucles-angelina',
     name: 'Boucles Angelina',
@@ -583,6 +594,7 @@ function renderProductCategories() {
 
 // Initialisation des catégories
 renderProductCategories();
+
 
 
 
