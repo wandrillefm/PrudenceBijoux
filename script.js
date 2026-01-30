@@ -35,7 +35,7 @@ const products = [
     images: ['image3.jpg','image7.jpg','image53.jpg'],
     personnalisable: false
   },
-    {
+  {
     id: 'boucles-angelina',
     name: 'Boucles Angelina',
     category: 'boucles',
@@ -594,6 +594,7 @@ function renderProductCategories() {
 
 // Initialisation des catégories
 renderProductCategories();
+
 
 
 
