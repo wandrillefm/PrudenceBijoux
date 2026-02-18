@@ -549,9 +549,6 @@ if (window.supabase) {
   }
 }
 
-// Initialisation des catégories
-renderProductCategories();
-
 // Commandes Supabase (enregistrement + email côté backend)
 // Commandes Supabase (enregistrement)
 const orderForm = document.getElementById('order-form');
@@ -619,3 +616,5 @@ if (orderForm && supabaseClient) {
     orderForm.reset();
   });
 }
+
+renderProductCategories();
