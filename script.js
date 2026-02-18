@@ -595,19 +595,57 @@ function renderProductCategories() {
 // Initialisation des catégories
 renderProductCategories();
 
+// Mailing list Supabase
+const supabaseUrl = 'https://oxzmgnormcofcvasluha.supabase.co';
+const supabaseKey =
+  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im94em1nbm9ybWNvZmN2YXNsdWhhIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzEzOTg1MjIsImV4cCI6MjA4Njk3NDUyMn0.yDovvFpUdHu-n_NvbBW5-uMmf5JvUNrdfZMHZqNMmaA';
 
+if (window.supabase) {
+  const supabaseClient = window.supabase.createClient(supabaseUrl, supabaseKey);
 
+  const form = document.getElementById('subscribeForm');
+  const emailInput = document.getElementById('emailInput');
+  const statusMsg = document.getElementById('statusMsg');
 
+  if (form && emailInput && statusMsg) {
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const email = emailInput.value.trim();
+      if (!email) {
+        statusMsg.textContent = 'Entre un email.';
+        return;
+      }
 
+      statusMsg.textContent = 'Vérification...';
 
+      // Vérifier si déjà inscrit
+      const { data: existing, error: checkError } = await supabaseClient
+        .from('subscribers')
+        .select('email')
+        .eq('email', email)
+        .maybeSingle();
 
+      if (checkError) {
+        statusMsg.textContent = "Erreur de vérification : " + checkError.message;
+        return;
+      }
 
+      if (existing) {
+        statusMsg.textContent = 'Cet email est déjà inscrit.';
+        return;
+      }
 
+      // Inscription
+      const { error: insertError } = await supabaseClient
+        .from('subscribers')
+        .insert({ email });
 
-
-
-
-
-
-
-
+      if (insertError) {
+        statusMsg.textContent = "Erreur lors de l'inscription : " + insertError.message;
+      } else {
+        statusMsg.textContent = 'Inscription réussie, merci !';
+        emailInput.value = '';
+      }
+    });
+  }
+}
