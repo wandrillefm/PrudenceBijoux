@@ -553,6 +553,7 @@ if (window.supabase) {
 renderProductCategories();
 
 // Commandes Supabase (enregistrement + email côté backend)
+// Commandes Supabase (enregistrement)
 const orderForm = document.getElementById('order-form');
 const orderNameInput = document.getElementById('order-name');
 const orderEmailInput = document.getElementById('order-email');
@@ -601,13 +602,20 @@ if (orderForm && supabaseClient) {
     if (error) {
       console.error(error);
       orderStatusEl.textContent = "Erreur lors de l'enregistrement. Réessaie plus tard.";
+      alert("Erreur lors de l'enregistrement de la commande.");
       return;
     }
 
+    // Vider le panier
     localStorage.removeItem('cart');
     renderCartOnOrderPage();
 
-    orderStatusEl.textContent = 'Commande envoyée ! Vous recevrez une confirmation.';
+    // Message sous le bouton
+    orderStatusEl.textContent = 'Commande envoyée !';
+
+    // Popup de confirmation
+    alert('Votre commande a bien été enregistrée, vous allez recevoir un lien de paiement sous peu !');
+
     orderForm.reset();
   });
 }
