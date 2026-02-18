@@ -134,7 +134,6 @@
       flex-direction: column;
       justify-content: space-between;
       width: 100%;
-      aspect-ratio: 6/7;
     }
 
 .card-image {
@@ -169,7 +168,6 @@
       flex-direction: column;
       justify-content: space-between;
       width: 100%;
-      aspect-ratio: 5/2;
     }
 
     .desc {
@@ -304,7 +302,6 @@
 
     /* Cart cards */
     .card.cart-card {
-      aspect-ratio: 2/1;
       padding: 0;
       background: transparent;
       border: none;
@@ -439,14 +436,12 @@
       /* Cartes verticales : même padding, mais ratio différent */
       .page .card {
         padding: 1% 10% 0 10%;
-        aspect-ratio: 3 / 2;
         justify-content: flex-start;
       }
 
       /* small-card : padding mobile mais ratio 5/1 conservé */
       .page .small-card {
         padding: 1% 10% 0 10%;
-        aspect-ratio: 5 / 1;
         justify-content: flex-start;
       }
 
@@ -473,7 +468,6 @@
       }
 
       #page-commande .card.cart-card {
-        aspect-ratio: 3 / 1;
         padding: 0;
       }
 
@@ -509,6 +503,7 @@ textarea {
   box-sizing: border-box;
   font-family: inherit;
 }
+
 
 
 
