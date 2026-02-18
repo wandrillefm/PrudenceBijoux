@@ -220,24 +220,44 @@
     </section>
 
     <!-- PAGE COMMANDE (panier) -->
-    <section class="page" id="page-commande">
-      <section class="title-row">
-        <h1 class="main-title">Commander</h1>
-      </section>
+<section class="page" id="page-commande">
+  <section class="title-row">
+    <h1 class="main-title">Commander</h1>
+  </section>
 
-      <section class="cards-row" id="order-cart">
-        <!-- Contenu généré en JS -->
-      </section>
+  <section class="cards-row" id="order-cart">
+    <!-- Contenu généré en JS -->
+  </section>
 
-      <div id="order-summary" style="margin-top:2vmin; font-size:2.1vmin;"></div>
+  <div id="order-summary" style="margin-top:2vmin; font-size:2.1vmin;"></div>
 
-      <div style="margin-top:3vmin; padding-bottom:17vmin;">
-        <button id="send-order"
-                style="padding:0.8vmin 3.5vmin; border:1px solid var(--text); background:transparent; cursor:pointer; font-size:2.1vmin;">
-          Envoyer la commande
-        </button>
-      </div>
-    </section>
+  <form id="order-form" style="margin-top:3vmin; padding-bottom:17vmin;">
+    <div style="margin-bottom:1vmin;">
+      <label for="order-name">Nom complet</label>
+      <input id="order-name" type="text" required
+             style="width:100%; padding:0.5vmin; margin-top:0.3vmin;">
+    </div>
+
+    <div style="margin-bottom:1vmin;">
+      <label for="order-email">Email</label>
+      <input id="order-email" type="email" required
+             style="width:100%; padding:0.5vmin; margin-top:0.3vmin;">
+    </div>
+
+    <div style="margin-bottom:1vmin;">
+      <label for="order-notes">Message / précisions (optionnel)</label>
+      <textarea id="order-notes"
+                style="width:100%; padding:0.5vmin; margin-top:0.3vmin; height:6em;"></textarea>
+    </div>
+
+    <button id="send-order"
+            type="submit"
+            style="padding:0.8vmin 3.5vmin; border:1px solid var(--text); background:transparent; cursor:pointer; font-size:2.1vmin;">
+      Valider la commande
+    </button>
+    <span id="order-status" style="margin-left:1vmin; font-size:2.1vmin;"></span>
+  </form>
+</section>
 
     <!-- PAGE CONTACT -->
     <section class="page" id="page-contact">
