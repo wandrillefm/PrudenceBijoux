@@ -425,37 +425,38 @@ function openLightbox(productName, materials, price, description, options = {}) 
 
   currentProduct = { id: productId, name: productName, materials, price, personnalisable };
 
-  const newAddBtn = addBtn.cloneNode(true);
-  addBtn.parentNode.replaceChild(newAddBtn, addBtn);
+const newAddBtn = addBtn.cloneNode(true);
+addBtn.parentNode.replaceChild(newAddBtn, addBtn);
 
-  newAddBtn.addEventListener('click', function () {
-    if (!currentProduct) return;
+newAddBtn.addEventListener('click', function () {
+  if (!currentProduct) return;
 
-    const personalization = currentProduct.personnalisable ? customEl.value.trim() : '';
-    const cart = getCart();
+  const personalization = currentProduct.personnalisable ? customEl.value.trim() : '';
+  const cart = getCart();
 
-    if (mode === 'commande' && currentCartIndex !== null) {
-      const item = cart[currentCartIndex];
-      if (item) {
-        item.personalization = personalization;
-        saveCart(cart);
-        renderCartOnOrderPage();
-      }
-      newAddBtn.textContent = 'Mis à jour';
-    } else {
-      addToCart({
-        id: currentProduct.id || currentProduct.name,
-        name: currentProduct.name,
-        materials: currentProduct.materials,
-        price: currentProduct.price,
-        quantity: 1,
-        personalization
-      });
-      newAddBtn.textContent = 'Ajouté au panier';
+  if (mode === 'commande' && currentCartIndex !== null) {
+    const item = cart[currentCartIndex];
+    if (item) {
+      item.personalization = personalization;
+      saveCart(cart);
+      renderCartOnOrderPage();
     }
+    newAddBtn.textContent = 'Mis à jour';
+  } else {
+    addToCart({
+      id: currentProduct.id || currentProduct.name,
+      name: currentProduct.name,
+      materials: currentProduct.materials,
+      price: currentProduct.price,
+      quantity: 1,
+      personalization
+    });
+    newAddBtn.textContent = 'Ajouté au panier';
+  }
 
-    statusEl.textContent = '';
-  });
+  statusEl.textContent = '';
+});
+
 
   document.body.classList.add('lightbox-open');
   lightbox.classList.add('active');
@@ -494,16 +495,114 @@ document.getElementById('lightbox').addEventListener('click', function(e) {
   if (e.target === this) closeLightbox();
 });
 
+function buildOrderEmailBody() {
+  const cart = getCart();
+  if (cart.length === 0) {
+    return 'Panier vide.';
+  }
+
+  let body = 'Bonjour,%0D%0A%0D%0AJe souhaite passer la commande suivante :%0D%0A%0D%0A';
+
+  cart.forEach(item => {
+    body += `- ${item.quantity || 1} x ${item.name || item.id} (${item.materials}, ${item.price})%0D%0A`;
+    if (item.personalization) {
+      body += `  Personnalisation : ${item.personalization}%0D%0A`;
+    }
+  });
+
+  body += '%0D%0AMerci,%0D%0A';
+
+  return body;
+}
+
+const sendOrderBtn = document.getElementById('send-order');
+if (sendOrderBtn) {
+  sendOrderBtn.addEventListener('click', () => {
+    const cart = getCart();
+    if (cart.length === 0) {
+      alert('Votre panier est vide.');
+      return;
+    }
+
+    const subject = encodeURIComponent('Nouvelle commande Prudence Bijoux');
+    const body = buildOrderEmailBody();
+    const mailto = `mailto:prudelaruelle@yahoo.com?subject=${subject}&body=${body}`;
+    window.location.href = mailto;
+  });
+}
+
+function createProductCard(product) {
+  const article = document.createElement('article');
+  article.className = 'card clickable';
+  article.dataset.productId = product.id;
+
+  article.innerHTML = `
+    <div class="card-image"><img src="${product.images[0]}" alt="prudence-bijoux"></div>
+    <div class="card-info">
+      <div class="card-info-left">
+        <p>${product.name}</p>
+        <p>${product.materials}</p>
+        <p>${product.details}</p>
+      </div>
+      <div class="card-info-right"><p>${product.price}</p></div>
+    </div>
+  `;
+
+  article.addEventListener('click', () => {
+    openLightbox(
+      product.name,
+      product.materials,
+      product.price,
+      product.description,
+      {
+        images: product.images,
+        productId: product.id,
+        personnalisable: product.personnalisable === true
+      }
+    );
+  });
+
+  return article;
+}
+
+function renderProductCategories() {
+  const bouclesContainer = document.getElementById('cards-boucles');
+  const colliersContainer = document.getElementById('cards-colliers');
+  const braceletsContainer = document.getElementById('cards-bracelets');
+
+  if (bouclesContainer) {
+    bouclesContainer.innerHTML = '';
+    products
+      .filter(p => p.category === 'boucles')
+      .forEach(p => bouclesContainer.appendChild(createProductCard(p)));
+  }
+
+  if (colliersContainer) {
+    colliersContainer.innerHTML = '';
+    products
+      .filter(p => p.category === 'colliers')
+      .forEach(p => colliersContainer.appendChild(createProductCard(p)));
+  }
+
+  if (braceletsContainer) {
+    braceletsContainer.innerHTML = '';
+    products
+      .filter(p => p.category === 'bracelets')
+      .forEach(p => braceletsContainer.appendChild(createProductCard(p)));
+  }
+}
+
+// Initialisation des catégories
+renderProductCategories();
+
 // Mailing list Supabase
 const supabaseUrl = 'https://oxzmgnormcofcvasluha.supabase.co';
 const supabaseKey =
   'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im94em1nbm9ybWNvZmN2YXNsdWhhIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzEzOTg1MjIsImV4cCI6MjA4Njk3NDUyMn0.yDovvFpUdHu-n_NvbBW5-uMmf5JvUNrdfZMHZqNMmaA';
 
-let supabaseClient = null;
 if (window.supabase) {
-  supabaseClient = window.supabase.createClient(supabaseUrl, supabaseKey);
+  const supabaseClient = window.supabase.createClient(supabaseUrl, supabaseKey);
 
-  // Newsletter
   const form = document.getElementById('subscribeForm');
   const emailInput = document.getElementById('emailInput');
   const statusMsg = document.getElementById('statusMsg');
@@ -519,6 +618,7 @@ if (window.supabase) {
 
       statusMsg.textContent = 'Vérification...';
 
+      // Vérifier si déjà inscrit
       const { data: existing, error: checkError } = await supabaseClient
         .from('subscribers')
         .select('email')
@@ -535,6 +635,7 @@ if (window.supabase) {
         return;
       }
 
+      // Inscription
       const { error: insertError } = await supabaseClient
         .from('subscribers')
         .insert({ email });
@@ -548,73 +649,3 @@ if (window.supabase) {
     });
   }
 }
-
-// Commandes Supabase (enregistrement + email côté backend)
-// Commandes Supabase (enregistrement)
-const orderForm = document.getElementById('order-form');
-const orderNameInput = document.getElementById('order-name');
-const orderEmailInput = document.getElementById('order-email');
-const orderNotesInput = document.getElementById('order-notes');
-const orderStatusEl = document.getElementById('order-status');
-
-if (orderForm && supabaseClient) {
-  orderForm.addEventListener('submit', async (e) => {
-    e.preventDefault();
-
-    const cart = getCart();
-    if (cart.length === 0) {
-      alert('Votre panier est vide.');
-      return;
-    }
-
-    const customer_name = orderNameInput.value.trim();
-    const customer_email = orderEmailInput.value.trim();
-    const notes = orderNotesInput.value.trim();
-
-    if (!customer_name || !customer_email) {
-      orderStatusEl.textContent = 'Merci de renseigner nom et email.';
-      return;
-    }
-
-    orderStatusEl.textContent = 'Envoi de la commande...';
-
-    const cartSummaryLines = cart.map(item => {
-      const line = `${item.quantity || 1} x ${item.name || item.id} (${item.materials}, ${item.price})`;
-      const perso = item.personalization ? ` - Perso: ${item.personalization}` : '';
-      return line + perso;
-    });
-    const cartSummary = cartSummaryLines.join('\n');
-
-    const { error } = await supabaseClient
-      .from('orders')
-      .insert({
-        customer_name,
-        customer_email,
-        notes,
-        cart_json: cart,
-        cart_summary: cartSummary,
-        status: 'new'
-      });
-
-    if (error) {
-      console.error(error);
-      orderStatusEl.textContent = "Erreur lors de l'enregistrement. Réessaie plus tard.";
-      alert("Erreur lors de l'enregistrement de la commande.");
-      return;
-    }
-
-    // Vider le panier
-    localStorage.removeItem('cart');
-    renderCartOnOrderPage();
-
-    // Message sous le bouton
-    orderStatusEl.textContent = 'Commande envoyée !';
-
-    // Popup de confirmation
-    alert('Votre commande a bien été enregistrée, vous allez recevoir un lien de paiement sous peu !');
-
-    orderForm.reset();
-  });
-}
-
-renderProductCategories();
